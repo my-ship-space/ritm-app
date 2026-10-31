@@ -254,6 +254,50 @@ button.primary:hover{background:#206d62}
 @media(max-width:680px){.streak-gift{grid-template-columns:92px minmax(0,1fr);gap:13px;padding:16px}.streak-gift-art{min-height:100px}.streak-gift-art .cookie-svg{width:86px;height:70px}.cookie-spark{right:8px;top:5px;font-size:16px}.streak-gift h2{font-size:18px}.streak-gift p{font-size:12px}.fortune-cookie-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.fortune-cookie-card{min-height:156px}.fortune-cookie-card .cookie-svg{width:90px;height:68px}.cookie-dialog{padding:27px 21px 22px}.cookie-fortune{font-size:18px}}
 @media(max-width:390px){.streak-gift{grid-template-columns:1fr}.streak-gift-art{min-height:88px}.gift-progress-wrap{gap:7px}.gift-progress-label{font-size:11px}}
 
+
+/* Mobile fix: keep mood labels centered and aligned under every face */
+.moods{align-items:stretch}
+.mood{
+  min-width:0;
+  min-height:132px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:flex-start;
+  text-align:center;
+  gap:8px;
+  padding:12px 3px;
+}
+.mood .face{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex:0 0 40px;
+  width:100%;
+  line-height:1;
+}
+.mood .face-svg{display:block;flex:0 0 auto}
+.mood span:last-child{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  width:100%;
+  min-height:2.6em;
+  line-height:1.25;
+  font-size:clamp(10px, 2.7vw, 13px);
+  overflow-wrap:normal;
+  word-break:normal;
+}
+.mood.selected{padding:11px 2px}
+@media(max-width:620px){
+  .mood{min-height:126px;padding:11px 2px}
+  .mood.selected{padding:10px 1px}
+  .mood .face{flex-basis:40px}
+  .mood .face-svg{width:40px;height:40px}
+  .mood span:last-child{font-size:clamp(10px, 2.7vw, 12px);min-height:2.6em}
+}
+
 </style>
 
 <meta name="theme-color" content="#b9e5f5">
