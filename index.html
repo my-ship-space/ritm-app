@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Ритм - приложение для ментального здоровья</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <!--
+      Need a visual blank slate?
+      Remove all code in `styles.css`!
+    -->
+    <link rel="stylesheet" href="styles.css" />
+    <script type="module" src="script.js"></script>
+  </head>
+  <body>
+  <!doctype html>
+  <html lang="ru">
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ритм — трекер настроения</title>
+  <style>
+  :root{--bg:#f5f4f0;--card:#fff;--ink:#252a2d;--muted:#6f777b;--line:#e5e7e4;--accent:#496e69;--soft:#e7efec;--gold:#c28d47}
+  *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.45 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+  .app{max-width:980px;margin:auto;padding:22px 18px 100px}.top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:24px}.brand{font-weight:800;font-size:25px;letter-spacing:-.8px}.brand span{color:var(--accent)}.pill{font-size:12px;color:var(--accent);background:var(--soft);border-radius:99px;padding:7px 11px}
+  h1{font-size:clamp(25px,4vw,36px);letter-spacing:-1px;line-height:1.15;margin:0 0 9px}h2{font-size:21px;margin:0 0 12px;letter-spacing:-.4px}p{margin:0 0 12px}.muted{color:var(--muted)}.small{font-size:13px}.panel{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:22px;margin-top:16px;box-shadow:0 4px 18px #1f2b2510}.hero{padding:28px;background:linear-gradient(125deg,#e7efec,#fdfcf8)}.hero p{max-width:650px;color:#586462}.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:20px 0}.tab,button{border:0;border-radius:12px;padding:11px 15px;font:inherit;cursor:pointer}.tab{background:#e9eae6;color:#555e5d}.tab.active,button.primary{background:var(--accent);color:white}.tabpane{display:none}.tabpane.active{display:block}.moods{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin:17px 0}.mood{background:#fafaf8;border:1px solid var(--line);border-radius:15px;padding:15px 6px;color:var(--ink);display:flex;flex-direction:column;align-items:center;gap:7px}.mood .face{font-size:29px;line-height:1}.mood.selected{border:2px solid var(--accent);background:var(--soft);padding:14px 5px}.mood span:last-child{font-size:12px}.field{width:100%;border:1px solid var(--line);border-radius:12px;padding:12px;font:inherit;background:#fff;color:var(--ink);resize:vertical}.privacy{font-size:12px;color:var(--muted);margin:8px 0 14px}.actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.button-lite{background:#eff0ed;color:#37403f}.notice{padding:12px 14px;border-radius:12px;background:#f7f1e7;color:#6c5639;font-size:13px;margin-top:12px}.statrow{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.stat{padding:14px;border-radius:14px;background:#f6f7f4}.stat strong{font-size:24px;display:block}.chart{width:100%;height:220px;display:block}.history-item{border-top:1px solid var(--line);padding:13px 0;display:grid;grid-template-columns:45px 1fr auto;gap:10px;align-items:start}.history-item:first-of-type{border-top:0}.mini{font-size:25px}.tag{font-size:12px;background:#f0f1ed;padding:5px 8px;border-radius:99px;color:#616966}.card-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.topic-card{border:1px solid var(--line);border-radius:16px;padding:17px;background:#fff}.topic-card p{color:var(--muted);font-size:14px}.topic-card button{margin-top:4px}.quiz-option{display:block;width:100%;text-align:left;background:#f3f4f0;color:var(--ink);margin:8px 0}.quiz-option.chosen{outline:2px solid var(--accent);background:var(--soft)}.bottomnote{text-align:center;color:var(--muted);font-size:12px;margin-top:25px}.empty{text-align:center;color:var(--muted);padding:24px}.sectionhead{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+  @media(max-width:620px){.app{padding:15px 12px 90px}.panel{padding:17px;border-radius:17px}.hero{padding:22px 18px}.moods{gap:6px}.mood{padding:12px 2px}.mood.selected{padding:11px 1px}.mood .face{font-size:25px}.mood span:last-child{font-size:10px}.card-grid{grid-template-columns:1fr}.statrow{grid-template-columns:repeat(3,1fr)}.stat{padding:10px}.stat strong{font-size:20px}.history-item{grid-template-columns:36px 1fr}.history-item .tag{grid-column:2;justify-self:start}}
+  </style>
+  </head>
+  <body>
+  <div class="app">
+    <header class="top"><div class="brand">ритм<span>.</span></div><div class="pill">Демо-версия · данные на этом устройстве</div></header>
+    <section class="panel hero">
+      <h1>Замечать своё состояние — уже забота о себе.</h1>
+      <p>Отмечайте настроение столько раз, сколько вам нужно. Со временем график поможет замечать изменения, а короткие материалы — лучше понимать себя.</p>
+      <div class="actions"><span class="tag">Без лимита отметок</span><span class="tag">Личный дневник</span><span class="tag">Без постановки диагнозов</span></div>
+    </section>
+    <nav class="tabs" aria-label="Разделы">
+      <button class="tab active" data-tab="tracker">Настроение</button>
+      <button class="tab" data-tab="history">История</button>
+      <button class="tab" data-tab="library">Карточки</button>
+    </nav>
+    <main>
+      <section class="tabpane active" id="tracker">
+        <div class="panel">
+          <h2>Как вы себя чувствуете сейчас?</h2>
+          <p class="muted">Выберите один из пяти уровней. Можно сохранять новые отметки в любое время.</p>
+          <div class="moods" id="moods">
+            <button class="mood" data-mood="1"><span class="face">☹</span><span>Очень тяжело</span></button>
+            <button class="mood" data-mood="2"><span class="face">🙁</span><span>Тяжело</span></button>
+            <button class="mood" data-mood="3"><span class="face">😐</span><span>Нейтрально</span></button>
+            <button class="mood" data-mood="4"><span class="face">🙂</span><span>Хорошо</span></button>
+            <button class="mood" data-mood="5"><span class="face">☺</span><span>Очень хорошо</span></button>
+          </div>
+          <label for="comment"><strong>Комментарий</strong></label>
+          <textarea id="comment" class="field" rows="3" placeholder="Напишите комментарий или используйте это поле как личный дневник"></textarea>
+          <p class="privacy">Важно: в этом прототипе текст комментариев хранится локально в браузере. Он не анализируется и не используется для определения симптомов.</p>
+          <div class="actions"><button class="primary" id="saveMood" disabled>Сохранить отметку</button><span class="small muted" id="selectedLabel">Выберите настроение</span></div>
+          <div class="notice" id="screeningNotice" hidden></div>
+        </div>
+        <div class="panel">
+          <div class="sectionhead"><h2>Ваш график</h2><span class="small muted">Уровень настроения · 1–5</span></div>
+          <div id="chartWrap"><div class="empty">После первой отметки здесь появится график.</div></div>
+        </div>
+        <div class="panel">
+          <h2>Ваш ритм</h2>
+          <div class="statrow">
+            <div class="stat"><span class="small muted">Отметок всего</span><strong id="totalCount">0</strong></div>
+            <div class="stat"><span class="small muted">Дней подряд</span><strong id="streakCount">0</strong></div>
+            <div class="stat"><span class="small muted">Средний уровень</span><strong id="averageMood">—</strong></div>
+          </div>
+          <p class="small muted" style="margin-top:12px">Отметки не ограничены ни в бесплатной, ни в Premium-версии.</p>
+        </div>
+      </section>
+      <section class="tabpane" id="history">
+        <div class="panel">
+          <div class="sectionhead"><h2>История отметок</h2><button class="button-lite" id="exportData">Скачать данные</button></div>
+          <p class="muted small">Записи отсортированы от новых к старым. Комментарии остаются частью личного дневника.</p>
+          <div id="historyList"><div class="empty">Пока нет записей. Добавьте первую отметку в разделе «Настроение».</div></div>
+        </div>
+      </section>
+      <section class="tabpane" id="library">
+        <div class="panel">
+          <h2>Какое направление психотерапии вам подходит?</h2>
+          <p class="muted">Познакомьтесь с разными подходами. Короткое описание помогает сориентироваться, но не заменяет консультацию специалиста.</p>
+          <div class="card-grid" id="therapyGrid">
+            <article class="topic-card"><h3>Нарративная практика</h3><p>Помогает отделять человека от проблемы, исследовать влияние историй о себе и находить исключения из привычных сценариев.</p><button class="button-lite" data-info="narrative">Подробнее</button></article>
+            <article class="topic-card"><h3>Когнитивно-поведенческая терапия</h3><p>Исследует связи мыслей, эмоций и действий; часто включает практические упражнения между встречами.</p><button class="button-lite" data-info="cbt">Подробнее</button></article>
+            <article class="topic-card"><h3>Гештальт-терапия</h3><p>Уделяет внимание переживаниям в настоящем, осознаванию потребностей и отношениям с другими людьми.</p><button class="button-lite" data-info="gestalt">Подробнее</button></article>
+            <article class="topic-card"><h3>Системная терапия</h3><p>Рассматривает трудности в контексте отношений, семейных и других систем взаимодействия.</p><button class="button-lite" data-info="systemic">Подробнее</button></article>
+          </div>
+          <div id="therapyDetail" class="notice" hidden></div>
+        </div>
+        <div class="panel">
+          <h2>Мини-викторина</h2>
+          <p id="quizQuestion">Когда вы сталкиваетесь с трудностью, что вам было бы полезнее исследовать в первую очередь?</p>
+          <div id="quizOptions">
+            <button class="quiz-option" data-answer="story">Истории о себе и влияние проблемы на жизнь</button>
+            <button class="quiz-option" data-answer="thoughts">Мысли, привычные реакции и небольшие шаги</button>
+            <button class="quiz-option" data-answer="feelings">Чувства, потребности и происходящее сейчас</button>
+            <button class="quiz-option" data-answer="relationships">Отношения и повторяющиеся взаимодействия</button>
+          </div>
+          <div id="quizResult" class="notice" hidden></div>
+          <p class="small muted">Это ознакомительная викторина, а не психологическая диагностика и не способ определить единственно подходящую терапию.</p>
+        </div>
+        <div class="panel">
+          <h2>Нужна консультация?</h2>
+          <p class="muted">В полной версии здесь можно будет выбрать направление и оставить заявку координатору, который поможет подобрать специалиста.</p>
+          <button class="primary" id="consultBtn">Как будет работать запись</button>
+          <div id="consultInfo" class="notice" hidden>В рабочей версии здесь появится защищённая форма заявки. Дневниковые комментарии не будут автоматически передаваться психологу. Передача любой информации должна быть отдельной, прозрачной и согласованной с пользователем.</div>
+        </div>
+      </section>
+    </main>
+    <footer class="bottomnote">Прототип для проверки идеи. Это не медицинский сервис и не заменяет помощь специалиста.</footer>
+  </div>
+  <script>
+  const STORE='ritm_demo_moods_v1';
+  let entries=[];let selectedMood=null;
+  try{entries=JSON.parse(localStorage.getItem(STORE)||'[]')}catch(e){entries=[]}
+  const moodInfo={1:{label:'Очень тяжело',symbol:'☹'},2:{label:'Тяжело',symbol:'🙁'},3:{label:'Нейтрально',symbol:'😐'},4:{label:'Хорошо',symbol:'🙂'},5:{label:'Очень хорошо',symbol:'☺'}};
+  const $=s=>document.querySelector(s);
+  function save(){localStorage.setItem(STORE,JSON.stringify(entries))}
+  function dayKey(d){let x=new Date(d);return x.getFullYear()+'-'+String(x.getMonth()+1).padStart(2,'0')+'-'+String(x.getDate()).padStart(2,'0')}
+  function getStreak(){const days=[...new Set(entries.map(e=>dayKey(e.time)))].sort().reverse();if(!days.length)return 0;let streak=0;let d=new Date();d.setHours(0,0,0,0);for(let i=0;i<days.length;i++){const target=new Date(d);target.setDate(d.getDate()-i);if(days.includes(dayKey(target)))streak++;else break}return streak}
+  document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('active',x===b));document.querySelectorAll('.tabpane').forEach(x=>x.classList.toggle('active',x.id===b.dataset.tab));render()}));
+  document.querySelectorAll('.mood').forEach(b=>b.addEventListener('click',()=>{selectedMood=Number(b.dataset.mood);document.querySelectorAll('.mood').forEach(x=>x.classList.toggle('selected',x===b));$('#saveMood').disabled=false;$('#selectedLabel').textContent='Выбрано: '+moodInfo[selectedMood].label}));
+  $('#saveMood').addEventListener('click',()=>{if(!selectedMood)return;entries.push({id:Date.now()+Math.random(),mood:selectedMood,comment:$('#comment').value.trim(),time:new Date().toISOString()});save();$('#comment').value='';selectedMood=null;document.querySelectorAll('.mood').forEach(x=>x.classList.remove('selected'));$('#saveMood').disabled=true;$('#selectedLabel').textContent='Отметка сохранена';render();});
+  function render(){renderChart();renderHistory();$('#totalCount').textContent=entries.length;$('#streakCount').textContent=getStreak();$('#averageMood').textContent=entries.length?(entries.reduce((a,e)=>a+e.mood,0)/entries.length).toFixed(1).replace('.',','):'—';const recent=entries.slice(-14);const lows=recent.length>=7&&recent.filter(e=>e.mood<=2).length>=6;const n=$('#screeningNotice');if(lows){n.hidden=false;n.textContent='Вы часто отмечаете тяжёлое настроение. Если это состояние сохраняется и влияет на повседневную жизнь, можно обсудить его со специалистом. Скрининг может быть предложен только по заранее определённым правилам отметок — не по тексту дневника. Одна лишь последовательность отметок не позволяет поставить диагноз.'}else n.hidden=true;}
+  function renderChart(){const wrap=$('#chartWrap');if(!entries.length){wrap.innerHTML='<div class="empty">После первой отметки здесь появится график.</div>';return}const data=entries.slice(-20);const W=800,H=220,L=35,R=18,T=20,B=35;const iw=W-L-R,ih=H-T-B;const y=v=>T+(5-v)/4*ih;const x=i=>L+(data.length===1?iw/2:i/(data.length-1)*iw);let svg=`<svg class="chart" viewBox="0 0 ${W} ${H}" role="img" aria-label="График настроения">`;for(let v=1;v<=5;v++){svg+=`<line x1="${L}" y1="${y(v)}" x2="${W-R}" y2="${y(v)}" stroke="#e5e7e4" stroke-width="1"/><text x="8" y="${y(v)+4}" font-size="12" fill="#6f777b">${v}</text>`}if(data.length>1)svg+=`<polyline points="${data.map((d,i)=>x(i)+','+y(d.mood)).join(' ')}" fill="none" stroke="#496e69" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>`;data.forEach((d,i)=>{svg+=`<circle cx="${x(i)}" cy="${y(d.mood)}" r="5" fill="#496e69"/><title>${new Date(d.time).toLocaleString('ru-RU')}: ${d.mood}/5</title>`});svg+=`<text x="${L}" y="${H-8}" font-size="12" fill="#6f777b">${new Date(data[0].time).toLocaleDateString('ru-RU')}</text><text x="${W-R}" y="${H-8}" text-anchor="end" font-size="12" fill="#6f777b">${new Date(data[data.length-1].time).toLocaleDateString('ru-RU')}</text></svg>`;wrap.innerHTML=svg}
+  function renderHistory(){const wrap=$('#historyList');if(!entries.length){wrap.innerHTML='<div class="empty">Пока нет записей. Добавьте первую отметку в разделе «Настроение».</div>';return}wrap.innerHTML=entries.slice().reverse().map(e=>`<div class="history-item"><div class="mini">${moodInfo[e.mood].symbol}</div><div><strong>${moodInfo[e.mood].label}</strong><div class="small muted">${new Date(e.time).toLocaleString('ru-RU')}</div>${e.comment?`<p style="margin:7px 0 0;white-space:pre-wrap">${escapeHtml(e.comment)}</p>`:'<p class="small muted" style="margin:5px 0 0">Без комментария</p>'}</div><span class="tag">${e.mood}/5</span></div>`).join('')}
+  function escapeHtml(s){return s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+  $('#exportData').addEventListener('click',()=>{const blob=new Blob([JSON.stringify(entries,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='ritm-mood-data.json';a.click();URL.revokeObjectURL(a.href)});
+  const therapyText={narrative:'Нарративная практика: исследует, как проблема влияет на жизнь и какие ценности, навыки и исключения помогают человеку формировать предпочитаемую историю о себе.',cbt:'КПТ: может подойти тем, кому интересна структурированная работа с мыслями, эмоциями и поведением, с практикой конкретных навыков.',gestalt:'Гештальт-терапия: может быть интересна для исследования чувств, потребностей, осознавания и способов выстраивать контакт.',systemic:'Системная терапия: помогает рассматривать трудности в контексте отношений и повторяющихся способов взаимодействия. Выбор направления лучше обсуждать со специалистом.'};
+  document.querySelectorAll('[data-info]').forEach(b=>b.addEventListener('click',()=>{const d=$('#therapyDetail');d.hidden=false;d.textContent=therapyText[b.dataset.info]}));
+  const quizMap={story:'Возможно, вам будет интересно познакомиться с нарративной практикой. Это лишь отправная точка для изучения подходов, а не персональная рекомендация.',thoughts:'Возможно, вам будет интересно узнать о когнитивно-поведенческой терапии. Подход и специалист выбираются с учётом вашего запроса.',feelings:'Возможно, вам будет интересно познакомиться с гештальт-терапией и подходами, уделяющими внимание переживаниям в настоящем.',relationships:'Возможно, вам будет интересно узнать о системной терапии и работе с отношениями.'};
+  document.querySelectorAll('[data-answer]').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('[data-answer]').forEach(x=>x.classList.toggle('chosen',x===b));const r=$('#quizResult');r.hidden=false;r.textContent=quizMap[b.dataset.answer]+' Разные направления могут быть полезны одному человеку; результат не является диагностикой.'}));
+  $('#consultBtn').addEventListener('click',()=>$('#consultInfo').hidden=!$('#consultInfo').hidden);
+  render();
+  </script>
+  </body>
+  </html>
+  </body>
+</html>
