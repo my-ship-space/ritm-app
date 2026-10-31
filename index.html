@@ -315,6 +315,17 @@ button.primary:hover{background:#206d62}
 .mood{min-height:76px !important;justify-content:center !important;padding-top:14px !important;padding-bottom:14px !important}
 .mood .face{flex:0 0 40px !important}
 
+
+/* Compact, expandable mental-health introduction on the first screen */
+.care-note{margin:10px 0 16px;border:1px solid rgba(255,255,255,.9);border-radius:14px;background:rgba(255,255,255,.64);box-shadow:0 5px 15px rgba(48,91,104,.045);color:#36545d}
+.care-note summary{cursor:pointer;list-style:none;padding:11px 14px;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:space-between;gap:10px}
+.care-note summary::-webkit-details-marker{display:none}
+.care-note summary:after{content:'+';font-size:18px;font-weight:400;color:#66858c}
+.care-note[open] summary:after{content:'−'}
+.care-note-body{padding:0 14px 11px;font-size:12px;line-height:1.5;color:#526c73}
+.care-note-body p{margin:0 0 8px}
+.care-note-body p:last-child{margin-bottom:0}
+
 </style>
 
 <meta name="theme-color" content="#b9e5f5">
@@ -343,6 +354,14 @@ button.primary:hover{background:#206d62}
     <p>Отмечайте настроение столько раз, сколько вам нужно. Со временем график поможет замечать изменения, а короткие материалы — лучше понимать себя.</p>
     <div class="actions"><span class="tag">Без лимита отметок</span><span class="tag">Личный дневник</span><span class="tag">Без постановки диагнозов</span></div>
   </section>
+  <details class="care-note">
+    <summary>Забота о вашем ментальном здоровье</summary>
+    <div class="care-note-body">
+      <p>«Ритм» помогает следить за эмоциональным состоянием в динамике. Приложение отслеживает ваши отметки настроения: как часто вы отмечаете сниженное настроение, как долго оно сохраняется и как меняется со временем.</p>
+      <p>Если отметки будут указывать на устойчивое снижение настроения более двух недель подряд, «Ритм» обратит на это ваше внимание и предложит пройти скрининговый тест на депрессию.</p>
+      <p>Приложение не ставит диагнозов и не заменяет консультацию врача или психотерапевта. Его задача — помочь вам лучше замечать изменения своего состояния и вовремя задуматься о профессиональной поддержке.</p>
+    </div>
+  </details>
   <nav class="tabs" aria-label="Разделы">
     <button class="tab active" data-tab="tracker">Настроение</button>
     <button class="tab" data-tab="history">История</button>
