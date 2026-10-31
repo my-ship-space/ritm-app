@@ -12,130 +12,510 @@
     <script type="module" src="script.js"></script>
   </head>
   <body>
-  <!doctype html>
-  <html lang="ru">
-  <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Ритм — трекер настроения</title>
-  <style>
-  :root{--bg:#f5f4f0;--card:#fff;--ink:#252a2d;--muted:#6f777b;--line:#e5e7e4;--accent:#496e69;--soft:#e7efec;--gold:#c28d47}
-  *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.45 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
-  .app{max-width:980px;margin:auto;padding:22px 18px 100px}.top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:24px}.brand{font-weight:800;font-size:25px;letter-spacing:-.8px}.brand span{color:var(--accent)}.pill{font-size:12px;color:var(--accent);background:var(--soft);border-radius:99px;padding:7px 11px}
-  h1{font-size:clamp(25px,4vw,36px);letter-spacing:-1px;line-height:1.15;margin:0 0 9px}h2{font-size:21px;margin:0 0 12px;letter-spacing:-.4px}p{margin:0 0 12px}.muted{color:var(--muted)}.small{font-size:13px}.panel{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:22px;margin-top:16px;box-shadow:0 4px 18px #1f2b2510}.hero{padding:28px;background:linear-gradient(125deg,#e7efec,#fdfcf8)}.hero p{max-width:650px;color:#586462}.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:20px 0}.tab,button{border:0;border-radius:12px;padding:11px 15px;font:inherit;cursor:pointer}.tab{background:#e9eae6;color:#555e5d}.tab.active,button.primary{background:var(--accent);color:white}.tabpane{display:none}.tabpane.active{display:block}.moods{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin:17px 0}.mood{background:#fafaf8;border:1px solid var(--line);border-radius:15px;padding:15px 6px;color:var(--ink);display:flex;flex-direction:column;align-items:center;gap:7px}.mood .face{font-size:29px;line-height:1}.mood.selected{border:2px solid var(--accent);background:var(--soft);padding:14px 5px}.mood span:last-child{font-size:12px}.field{width:100%;border:1px solid var(--line);border-radius:12px;padding:12px;font:inherit;background:#fff;color:var(--ink);resize:vertical}.privacy{font-size:12px;color:var(--muted);margin:8px 0 14px}.actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.button-lite{background:#eff0ed;color:#37403f}.notice{padding:12px 14px;border-radius:12px;background:#f7f1e7;color:#6c5639;font-size:13px;margin-top:12px}.statrow{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.stat{padding:14px;border-radius:14px;background:#f6f7f4}.stat strong{font-size:24px;display:block}.chart{width:100%;height:220px;display:block}.history-item{border-top:1px solid var(--line);padding:13px 0;display:grid;grid-template-columns:45px 1fr auto;gap:10px;align-items:start}.history-item:first-of-type{border-top:0}.mini{font-size:25px}.tag{font-size:12px;background:#f0f1ed;padding:5px 8px;border-radius:99px;color:#616966}.card-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.topic-card{border:1px solid var(--line);border-radius:16px;padding:17px;background:#fff}.topic-card p{color:var(--muted);font-size:14px}.topic-card button{margin-top:4px}.quiz-option{display:block;width:100%;text-align:left;background:#f3f4f0;color:var(--ink);margin:8px 0}.quiz-option.chosen{outline:2px solid var(--accent);background:var(--soft)}.bottomnote{text-align:center;color:var(--muted);font-size:12px;margin-top:25px}.empty{text-align:center;color:var(--muted);padding:24px}.sectionhead{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
-  @media(max-width:620px){.app{padding:15px 12px 90px}.panel{padding:17px;border-radius:17px}.hero{padding:22px 18px}.moods{gap:6px}.mood{padding:12px 2px}.mood.selected{padding:11px 1px}.mood .face{font-size:25px}.mood span:last-child{font-size:10px}.card-grid{grid-template-columns:1fr}.statrow{grid-template-columns:repeat(3,1fr)}.stat{padding:10px}.stat strong{font-size:20px}.history-item{grid-template-columns:36px 1fr}.history-item .tag{grid-column:2;justify-self:start}}
-  </style>
-  </head>
-  <body>
-  <div class="app">
-    <header class="top"><div class="brand">ритм<span>.</span></div><div class="pill">Демо-версия · данные на этом устройстве</div></header>
-    <section class="panel hero">
-      <h1>Замечать своё состояние — уже забота о себе.</h1>
-      <p>Отмечайте настроение столько раз, сколько вам нужно. Со временем график поможет замечать изменения, а короткие материалы — лучше понимать себя.</p>
-      <div class="actions"><span class="tag">Без лимита отметок</span><span class="tag">Личный дневник</span><span class="tag">Без постановки диагнозов</span></div>
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,400;6..12,500;6..12,600;6..12,700;6..12,800&family=Onest:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<title>Ритм — трекер настроения</title>
+<style>
+:root{--bg:#f5f4f0;--card:#fff;--ink:#252a2d;--muted:#6f777b;--line:#e5e7e4;--accent:#496e69;--soft:#e7efec;--gold:#c28d47;--locked:#f1f2ef}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.45 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.app{max-width:980px;margin:auto;padding:22px 18px 100px}.top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:24px}.brand{font-weight:800;font-size:25px;letter-spacing:-.8px}.brand span{color:var(--accent)}.pill{font-size:12px;color:var(--accent);background:var(--soft);border-radius:99px;padding:7px 11px}
+h1{font-size:clamp(25px,4vw,36px);letter-spacing:-1px;line-height:1.15;margin:0 0 9px}h2{font-size:21px;margin:0 0 12px;letter-spacing:-.4px}h3{font-size:17px;margin:0 0 8px}p{margin:0 0 12px}.muted{color:var(--muted)}.small{font-size:13px}.panel{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:22px;margin-top:16px;box-shadow:0 4px 18px #1f2b2510}.hero{padding:28px;background:linear-gradient(125deg,#e7efec,#fdfcf8)}.hero p{max-width:650px;color:#586462}.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:20px 0}.tab,button{border:0;border-radius:12px;padding:11px 15px;font:inherit;cursor:pointer}.tab{background:#e9eae6;color:#555e5d}.tab.active,button.primary{background:var(--accent);color:white}.tabpane{display:none}.tabpane.active{display:block}
+.moods{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin:17px 0}.mood{background:#fafaf8;border:1px solid var(--line);border-radius:15px;padding:15px 6px;color:var(--ink);display:flex;flex-direction:column;align-items:center;gap:7px}.mood .face{font-size:29px;line-height:1}.mood.selected{border:2px solid var(--accent);background:var(--soft);padding:14px 5px}.mood span:last-child{font-size:12px}.field{width:100%;border:1px solid var(--line);border-radius:12px;padding:12px;font:inherit;background:#fff;color:var(--ink);resize:vertical}.privacy{font-size:12px;color:var(--muted);margin:8px 0 14px}.actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.button-lite{background:#eff0ed;color:#37403f}.notice{padding:12px 14px;border-radius:12px;background:#f7f1e7;color:#6c5639;font-size:13px;margin-top:12px}.statrow{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.stat{padding:14px;border-radius:14px;background:#f6f7f4}.stat strong{font-size:24px;display:block}.chart{width:100%;height:220px;display:block}.history-item{border-top:1px solid var(--line);padding:13px 0;display:grid;grid-template-columns:45px 1fr auto;gap:10px;align-items:start}.history-item:first-of-type{border-top:0}.mini{font-size:25px}.tag{font-size:12px;background:#f0f1ed;padding:5px 8px;border-radius:99px;color:#616966}.card-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.topic-card{border:1px solid var(--line);border-radius:16px;padding:17px;background:#fff;transition:border-color .15s,background .15s,box-shadow .15s}.topic-card p{color:var(--muted);font-size:14px}.topic-card.selectable{cursor:pointer;text-align:left;width:100%;color:var(--ink)}.topic-card.selectable:hover{border-color:#a9bdb7}.topic-card.selectable.selected{border:2px solid var(--accent);background:var(--soft);padding:16px;box-shadow:0 0 0 2px #496e6910}.topic-card .card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}.selected-mark{font-size:12px;color:var(--accent);font-weight:700;white-space:nowrap}.collection-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.locked-card{background:var(--locked);border:1px solid var(--line);border-radius:14px;padding:14px;min-height:105px;color:#727a77;display:flex;flex-direction:column;justify-content:space-between;gap:12px}.locked-card .lock{font-size:18px}.locked-card .lock-label{font-size:11px;letter-spacing:.2px;text-transform:uppercase;color:#888f8c}
+.quiz-progress{height:6px;border-radius:99px;background:#eceeeb;overflow:hidden;margin:14px 0 18px}.quiz-progress>span{display:block;height:100%;background:var(--accent);transition:width .2s}.quiz-option{display:block;width:100%;text-align:left;background:#f3f4f0;color:var(--ink);margin:8px 0;border:1px solid transparent}.quiz-option.chosen{outline:2px solid var(--accent);background:var(--soft)}.quiz-controls{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:15px}.result{padding:16px;border-radius:14px;background:var(--soft);margin-top:14px}.result-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:14px}.result-actions button{flex:0 1 auto}.result-actions .find-therapist{background:var(--accent);color:#fff;font-weight:700}.result-actions .find-therapist:hover{background:#2e644b;transform:translateY(-1px)}@media(max-width:620px){.result-actions{align-items:stretch}.result-actions button{width:100%}}.contact-options{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:15px}.contact-option{border:1px solid var(--line);border-radius:14px;padding:16px;background:#fff;text-align:left;color:var(--ink);display:flex;align-items:center;gap:12px}.contact-option:hover{border-color:var(--accent);background:var(--soft)}.contact-icon{width:38px;height:38px;border-radius:11px;background:var(--soft);display:grid;place-items:center;font-weight:800;color:var(--accent);font-size:18px}.bottomnote{text-align:center;color:var(--muted);font-size:12px;margin-top:25px}.empty{text-align:center;color:var(--muted);padding:24px}.sectionhead{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}.selection-note{font-size:13px;color:var(--accent);margin-top:13px;min-height:18px}.reset-direction{font-size:13px;padding:8px 12px;border:1px solid rgba(57,118,90,.25);background:rgba(255,255,255,.72);color:#39765a}.reset-direction:hover{background:#fff;border-color:#39765a}.selection-tools{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.selection-actions{display:flex;align-items:center;gap:9px;flex-wrap:wrap}.find-therapist{background:var(--accent);color:#fff;font-weight:700}.find-therapist:hover{background:#2e644b;transform:translateY(-1px)}.selection-actions .find-therapist{font-size:13px;padding:9px 13px}.therapy-pagination{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:16px}.therapy-pagination button{padding:9px 13px}.therapy-pagination button:disabled{opacity:.45;cursor:not-allowed}.history-sort{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:12px 0 6px}.history-sort label{font-size:13px;color:var(--muted)}.history-sort select{border:1px solid var(--line);border-radius:10px;padding:9px 34px 9px 11px;background:#fff;color:var(--ink);font:inherit;font-size:14px;cursor:pointer}
+@media(max-width:620px){.app{padding:15px 12px 90px}.panel{padding:17px;border-radius:17px}.hero{padding:22px 18px}.moods{gap:6px}.mood{padding:12px 2px}.mood.selected{padding:11px 1px}.mood .face{font-size:25px}.mood span:last-child{font-size:10px}.card-grid{grid-template-columns:1fr}.collection-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.statrow{grid-template-columns:repeat(3,1fr)}.stat{padding:10px}.stat strong{font-size:20px}.history-item{grid-template-columns:36px 1fr}.history-item .tag{grid-column:2;justify-self:start}.contact-options{grid-template-columns:1fr}}
+
+/* РИТМ — тёплый редакционный визуальный стиль */
+:root{
+  --bg:#fbf8ef;
+  --card:#fffefa;
+  --ink:#293b32;
+  --muted:#758078;
+  --line:#e9e3d6;
+  --accent:#39765a;
+  --soft:#e8f1e6;
+  --gold:#e5b94f;
+  --locked:#f4f0e5;
+  --sky:#e7f1f0;
+  --clay:#d9865e;
+  --shadow:0 10px 28px rgba(57,75,55,.075);
+}
+*{box-sizing:border-box}
+body{
+  background:
+    radial-gradient(ellipse at 7% 8%, rgba(229,185,79,.13), transparent 28rem),
+    radial-gradient(ellipse at 94% 20%, rgba(122,174,166,.12), transparent 25rem),
+    var(--bg);
+  color:var(--ink);
+  font-family:"Trebuchet MS", "Segoe UI", sans-serif;
+  letter-spacing:.05px;
+}
+.app{max-width:1000px;padding:26px 22px 100px}
+.top{margin-bottom:28px;align-items:center}
+.brand-lockup{display:flex;align-items:center;gap:9px;min-width:150px}
+.brand{font-family:Georgia,"Times New Roman",serif;font-weight:700;font-size:31px;letter-spacing:-1.7px;color:#2d4939;line-height:1}
+.brand span{color:var(--clay)}
+.brand-wave{width:69px;height:27px;overflow:visible}
+.brand-wave path{fill:none;stroke:var(--accent);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.pill{font-size:12px;color:#52735d;background:#edf2e7;border:1px solid #dfe8d8;border-radius:99px;padding:8px 13px;letter-spacing:.15px}
+h1,h2,h3{font-family:Georgia,"Times New Roman",serif;color:#2d4035}
+h1{font-size:clamp(29px,4.3vw,42px);font-weight:700;line-height:1.12;letter-spacing:-.85px;max-width:620px}
+h2{font-size:24px;line-height:1.2;letter-spacing:-.35px}
+h3{font-size:19px;line-height:1.25}
+p{line-height:1.62}
+.muted{color:var(--muted)}
+.panel{background:rgba(255,254,250,.94);border:1px solid var(--line);border-radius:23px;padding:25px;margin-top:18px;box-shadow:var(--shadow)}
+.hero{position:relative;isolation:isolate;overflow:hidden;padding:35px 34px;background:linear-gradient(112deg,#fff1c9 0%,#fff8e9 48%,#e9f2e9 100%);border:1px solid #eee4cd;box-shadow:0 12px 28px rgba(119,103,61,.08)}
+.hero:after{content:"";position:absolute;z-index:-1;width:225px;height:225px;border-radius:50%;right:7%;top:-88px;background:rgba(255,255,255,.45);border:1px solid rgba(255,255,255,.55)}
+.hero:before{content:"";position:absolute;z-index:-1;width:145px;height:145px;border-radius:50%;right:16%;bottom:-104px;background:rgba(135,177,139,.13)}
+.hero p{max-width:620px;color:#647268;font-size:16px}
+.tabs{display:flex;gap:7px;flex-wrap:wrap;margin:22px 0 18px;padding:6px;background:#f0ecdf;border:1px solid #e8e1d0;border-radius:16px;width:max-content;max-width:100%}
+.tab,button{border-radius:12px;padding:11px 16px;font-family:"Trebuchet MS","Segoe UI",sans-serif;transition:background .18s,border-color .18s,transform .18s,box-shadow .18s}
+.tab{background:transparent;color:#667369}
+.tab:hover{background:rgba(255,255,255,.65)}
+.tab.active,button.primary{background:var(--accent);color:#fff;box-shadow:0 4px 10px rgba(57,118,90,.18)}
+.tab.active{font-weight:700}
+button.primary{font-weight:700;padding:12px 18px}
+button.primary:hover{background:#2e644b;transform:translateY(-1px)}
+button:focus-visible,.field:focus-visible,select:focus-visible{outline:3px solid rgba(229,185,79,.75);outline-offset:2px}
+.moods{gap:11px;margin:20px 0}
+.mood{min-height:100px;background:#fffdfa;border:1px solid #e8e1d3;border-radius:18px;padding:16px 7px;color:var(--ink);box-shadow:0 3px 9px rgba(50,60,42,.035)}
+.mood:hover{transform:translateY(-2px);box-shadow:0 7px 15px rgba(50,60,42,.08)}
+.mood .face{font-size:31px;line-height:1.15}
+.mood span:last-child{font-size:12px;color:#637066}
+.mood[data-mood="1"]{background:#fbede4}.mood[data-mood="2"]{background:#f8f0e4}.mood[data-mood="3"]{background:#f5f2e6}.mood[data-mood="4"]{background:#edf3e5}.mood[data-mood="5"]{background:#e7f2e9}
+.mood.selected{border:2px solid var(--accent);background:#e3efe2;padding:15px 6px;box-shadow:0 0 0 3px rgba(57,118,90,.10)}
+.field{border:1px solid #e2ddcf;border-radius:15px;padding:14px 15px;background:#fffefa;line-height:1.55}
+.field:focus{border-color:#c3ae6b;box-shadow:0 0 0 3px rgba(229,185,79,.15)}
+.privacy{font-size:12px;color:#79847b}
+.button-lite{background:#f2f0e7;color:#47574b;border:1px solid #e6e0d2}
+.button-lite:hover{background:#eaeede}
+.notice{padding:14px 16px;border-radius:14px;background:#fff3d8;color:#75603b;border:1px solid #f0e2bd;font-size:13px}
+.stat{background:#f3f4e9;border:1px solid #e8eadb;border-radius:16px;padding:16px}
+.stat:nth-child(2){background:#eaf2ed}.stat:nth-child(3){background:#f8efdf}
+.stat strong{font-family:Georgia,"Times New Roman",serif;color:#355d45;font-size:27px}
+.chart{width:100%;height:230px;display:block}
+.empty{color:#899188}
+.history-item{border-top:1px solid #eee8dc;padding:15px 2px}
+.tag{background:#f1f0e6;color:#68766b;border:1px solid #e9e5d7;padding:5px 9px}
+.history-sort select{border:1px solid #e5dfd1;border-radius:11px;background:#fffefa;color:var(--ink);padding:10px 34px 10px 12px}
+.collection-grid{gap:12px}
+.locked-card{min-height:112px;background:linear-gradient(145deg,#f7f2e5,#f1f0e4);border:1px solid #e9e2d2;border-radius:17px;padding:16px;color:#67756a}
+.locked-card:nth-child(3n+2){background:linear-gradient(145deg,#eef3e8,#eaf1e8)}
+.locked-card:nth-child(3n){background:linear-gradient(145deg,#edf3f1,#e9f0ed)}
+.locked-card strong{font-family:Georgia,"Times New Roman",serif;font-size:17px;color:#4e6253}
+.locked-card .lock{color:#8d9b8c}
+.locked-card .lock-label{font-size:10px;letter-spacing:.6px}
+.topic-card{border:1px solid #e9e2d6;border-radius:18px;padding:19px;background:#fffefa;box-shadow:0 3px 10px rgba(50,60,42,.035)}
+.topic-card p{font-size:14px;line-height:1.55;color:#758078;margin:11px 0 0}
+.topic-card.selectable:hover{border-color:#9cb89d;box-shadow:0 8px 18px rgba(57,118,90,.09);transform:translateY(-1px)}
+.topic-card.selectable.selected{border:2px solid var(--accent);background:#edf4e9;padding:18px;box-shadow:0 0 0 3px rgba(57,118,90,.09)}
+.selected-mark{color:var(--accent)}
+.selection-note{color:#57745c}
+.quiz-progress{height:7px;background:#efecdf}.quiz-progress>span{background:linear-gradient(90deg,#e4b64b,#6b9a6d);border-radius:99px}
+.quiz-option{background:#f7f5ed;border:1px solid #ece6d9;border-radius:13px;padding:13px 15px;line-height:1.45}
+.quiz-option:hover{background:#edf2e8;border-color:#d4e1d0}
+.quiz-option.chosen{outline:2px solid var(--accent);background:#e8f1e6;border-color:#cbdcc8}
+.result{background:#edf4e9;border:1px solid #dce8d7;border-radius:16px}
+.contact-option{border:1px solid #e8e1d4;border-radius:17px;background:#fffefa;padding:17px;transition:transform .18s,box-shadow .18s,border-color .18s}
+.contact-option:hover{border-color:#a9c1a8;background:#f4f7ee;box-shadow:0 7px 16px rgba(57,118,90,.08);transform:translateY(-1px)}
+.contact-icon{background:#eaf2e6;color:#44734f;border-radius:12px}
+.bottomnote{color:#8a9188;margin-top:28px}
+@media(max-width:620px){
+ .app{padding:17px 13px 90px}.top{align-items:flex-start;flex-direction:column;gap:12px}.brand{font-size:29px}.brand-wave{width:62px}.pill{align-self:flex-start}
+ .panel{padding:18px;border-radius:19px}.hero{padding:25px 20px}.hero:after{right:-76px;top:-90px}.hero:before{right:8%;}
+ h1{font-size:31px}h2{font-size:22px}.tabs{width:100%;display:grid;grid-template-columns:repeat(3,1fr)}.tab{padding:10px 6px;font-size:14px}
+ .moods{gap:6px}.mood{min-height:91px;padding:12px 2px}.mood.selected{padding:11px 1px}.mood .face{font-size:26px}.mood span:last-child{font-size:10px}
+ .card-grid{grid-template-columns:1fr}.collection-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.stat{padding:11px}.stat strong{font-size:23px}.contact-options{grid-template-columns:1fr}
+}
+
+/* Новая типографика: выразительный Onest + мягкий Nunito Sans */
+body{font-family:"Nunito Sans",sans-serif;font-size:16px;letter-spacing:0;}
+h1,h2,h3{font-family:"Onest",sans-serif;font-weight:700;letter-spacing:-.65px;}
+h1{font-size:clamp(29px,4.3vw,41px);font-weight:800;letter-spacing:-1.15px;line-height:1.13;}
+h2{font-size:23px;font-weight:750;letter-spacing:-.55px;line-height:1.23;}
+h3{font-size:18px;font-weight:700;letter-spacing:-.3px;}
+.brand{font-family:"Onest",sans-serif;font-weight:800;font-size:30px;letter-spacing:-1.8px;}
+.tab,button{font-family:"Nunito Sans",sans-serif;font-weight:650;letter-spacing:.05px;}
+.tab{font-weight:700;}
+.pill,.small,.privacy,.tag,.history-sort label,.history-sort select{font-family:"Nunito Sans",sans-serif;}
+.stat strong{font-family:"Onest",sans-serif;font-weight:800;letter-spacing:-1px;}
+.locked-card strong{font-family:"Onest",sans-serif;font-weight:700;letter-spacing:-.35px;}
+.topic-card strong,.contact-option strong{font-family:"Onest",sans-serif;font-weight:700;letter-spacing:-.25px;}
+.field{font-family:"Nunito Sans",sans-serif;font-size:15px;}
+@media(max-width:620px){h1{font-size:30px}h2{font-size:21px}.brand{font-size:29px}}
+
+
+/* Небо сверху, песок внизу — более живой природный фон */
+:root{
+  --ink:#173b4a;
+  --muted:#637d83;
+  --line:rgba(91,139,153,.20);
+  --accent:#287c70;
+  --soft:#e2f2eb;
+  --gold:#e9b94c;
+  --shadow:0 12px 32px rgba(45,91,108,.11);
+}
+html{min-height:100%;background:#bfe7f4}
+body{
+  min-height:100vh;
+  position:relative;
+  background:linear-gradient(180deg,#8ed2ed 0%,#b8e5f4 21%,#e4f3f1 46%,#f8f1df 69%,#f2d5a3 100%);
+  background-attachment:fixed;
+  color:var(--ink);
+}
+body::before{
+  content:"";position:fixed;z-index:0;pointer-events:none;inset:0 0 auto;height:390px;
+  background:
+    radial-gradient(ellipse 155px 48px at 8% 44%,rgba(255,255,255,.55) 0 54%,transparent 77%),
+    radial-gradient(ellipse 118px 40px at 17% 42%,rgba(255,255,255,.48) 0 54%,transparent 78%),
+    radial-gradient(ellipse 180px 55px at 76% 31%,rgba(255,255,255,.40) 0 54%,transparent 79%),
+    radial-gradient(ellipse 135px 44px at 88% 34%,rgba(255,255,255,.42) 0 54%,transparent 78%);
+  filter:blur(9px);opacity:.92;
+}
+body::after{
+  content:"";position:fixed;z-index:0;pointer-events:none;inset:auto 0 0;height:240px;
+  background:
+    radial-gradient(ellipse 65% 62% at 12% 112%,rgba(226,184,111,.42) 0 55%,transparent 57%),
+    radial-gradient(ellipse 58% 58% at 70% 118%,rgba(238,199,132,.48) 0 56%,transparent 58%),
+    radial-gradient(ellipse 45% 54% at 100% 120%,rgba(218,169,99,.30) 0 56%,transparent 58%);
+}
+.app{position:relative;z-index:1}
+.brand{color:#123e50}
+.brand span{color:#2c938b}
+.brand-wave path{stroke:#298f88}
+.pill{color:#1d6570;background:rgba(235,250,252,.72);border:1px solid rgba(255,255,255,.68);backdrop-filter:blur(8px)}
+.panel{background:rgba(255,255,255,.84);border:1px solid rgba(255,255,255,.85);box-shadow:0 12px 32px rgba(45,91,108,.10);backdrop-filter:blur(9px)}
+.hero{background:linear-gradient(120deg,rgba(235,249,253,.94),rgba(255,255,255,.80));border:1px solid rgba(255,255,255,.88);box-shadow:0 14px 34px rgba(53,112,131,.10)}
+.hero:after{background:rgba(255,255,255,.35);border-color:rgba(255,255,255,.55)}
+.hero:before{background:rgba(129,187,195,.16)}
+.hero p{color:#57717a}
+.tabs{background:rgba(237,249,251,.62);border-color:rgba(255,255,255,.7);backdrop-filter:blur(8px)}
+.tab{color:#3f6973}
+.tab.active,button.primary{background:#287c70;box-shadow:0 4px 12px rgba(40,124,112,.22)}
+button.primary:hover{background:#206d62}
+.mood{background:rgba(255,255,255,.76);border-color:rgba(255,255,255,.9);box-shadow:0 5px 15px rgba(48,91,104,.07)}
+.mood .face{display:grid;place-items:center;line-height:1}
+.face-svg{display:block;width:49px;height:49px;overflow:visible}
+.face-svg circle:first-child{fill:rgba(255,255,255,.24);stroke:var(--face-color);stroke-width:3.6}
+.face-svg .eye-dot{fill:var(--face-color)}
+.face-svg .eye,.face-svg .mouth{fill:none;stroke:var(--face-color);stroke-width:3.8;stroke-linecap:round;stroke-linejoin:round}
+.face-svg .mouth-open{fill:var(--face-color);stroke:var(--face-color);stroke-width:2.7;stroke-linecap:round;stroke-linejoin:round}
+.mood[data-mood="1"]{--face-color:#776acb;background:rgba(232,229,255,.88)}
+.mood[data-mood="2"]{--face-color:#c76d64;background:rgba(255,229,222,.90)}
+.mood[data-mood="3"]{--face-color:#bc842c;background:rgba(255,241,207,.92)}
+.mood[data-mood="4"]{--face-color:#66984f;background:rgba(229,243,217,.92)}
+.mood[data-mood="5"]{--face-color:#d98b18;background:rgba(255,232,169,.96)}
+.mood[data-mood="1"],.mood[data-mood="2"],.mood[data-mood="3"],.mood[data-mood="4"],.mood[data-mood="5"]{border-color:rgba(255,255,255,.72)}
+.mood.selected{border:2px solid var(--face-color)!important;background:rgba(255,255,255,.96)!important;box-shadow:0 0 0 3px color-mix(in srgb,var(--face-color) 17%,transparent);padding:15px 6px}
+.mood span:last-child{color:#294754;font-weight:700}
+.field{background:rgba(255,255,255,.86);border-color:rgba(104,151,164,.32)}
+.button-lite{background:rgba(231,246,247,.88);color:#315c66}
+.notice{background:rgba(255,245,218,.94);color:#69562e}
+.stat{background:rgba(233,247,244,.88)}
+.tag{background:rgba(234,247,247,.88);color:#47717a}
+.empty{color:#66838b}
+.bottomnote{color:#54747c}
+.contact-option{background:rgba(255,255,255,.83);border-color:rgba(255,255,255,.85)}
+@media(max-width:620px){.face-svg{width:40px;height:40px}.mood span:last-child{font-size:10px}}
+
+
+/* Подарочные печеньки с предсказаниями */
+.streak-gift{display:grid;grid-template-columns:150px minmax(0,1fr);align-items:center;gap:22px;margin:0 0 17px;padding:21px 24px;background:linear-gradient(115deg,rgba(255,249,226,.94),rgba(255,255,255,.84) 54%,rgba(226,244,246,.88));border:1px solid rgba(255,255,255,.95);overflow:hidden}
+.streak-gift-art{position:relative;display:grid;place-items:center;min-height:118px;border-radius:22px;background:linear-gradient(145deg,rgba(255,255,255,.64),rgba(242,222,178,.35))}
+.cookie-svg{width:116px;height:90px;display:block;filter:drop-shadow(0 7px 5px rgba(112,76,35,.17));}
+.cookie-spark{position:absolute;font-size:20px;color:#d9a43b;right:19px;top:12px}
+.streak-gift-copy{min-width:0}
+.eyebrow{display:block;color:#9a7837;font-size:10px;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;margin-bottom:6px}
+.streak-gift h2{font-size:clamp(19px,2.7vw,25px);margin:0 0 7px;color:#315467}
+.streak-gift p{font-size:14px;color:#5c747b;margin:0 0 12px;line-height:1.5}
+.gift-progress-wrap{display:flex;align-items:center;gap:11px;max-width:490px}
+.gift-progress{height:9px;flex:1;min-width:80px;overflow:hidden;border-radius:99px;background:rgba(190,211,207,.58);box-shadow:inset 0 1px 2px rgba(41,75,75,.08)}
+.gift-progress span{display:block;height:100%;width:0;background:linear-gradient(90deg,#e8b952,#3c9886);border-radius:inherit;transition:width .35s ease}
+.gift-progress-label{white-space:nowrap;font-size:12px;font-weight:800;color:#3c716e;font-variant-numeric:tabular-nums}
+.gift-message{display:block;margin-top:7px;font-size:12px;color:#6f7f79}
+.gift-collection-link{margin-top:11px;padding:8px 12px;border:1px solid rgba(54,126,118,.22);background:rgba(255,255,255,.65);color:#286d69;font-size:13px}
+.gift-collection-link:hover{background:#fff}
+.fortune-cookie-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:18px}
+.fortune-cookie-card{position:relative;min-height:176px;border:1px solid rgba(215,190,142,.52);border-radius:19px;padding:13px 12px 14px;background:linear-gradient(155deg,#fff9e9,#f8edcf);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;text-align:center;overflow:hidden;box-shadow:0 5px 13px rgba(105,89,55,.06);color:#7d6948}
+.fortune-cookie-card:nth-child(3n+2){background:linear-gradient(155deg,#f5f6e9,#e9f0de);border-color:rgba(170,190,151,.55)}
+.fortune-cookie-card:nth-child(3n){background:linear-gradient(155deg,#eef8f6,#e1efec);border-color:rgba(151,190,183,.55)}
+.fortune-cookie-card .cookie-svg{width:104px;height:78px;opacity:.72;transition:transform .2s,opacity .2s}
+.fortune-cookie-card.opened{cursor:pointer;color:#41665a;border-color:rgba(213,166,78,.62);box-shadow:0 8px 20px rgba(105,89,55,.11)}
+.fortune-cookie-card.opened .cookie-svg{opacity:1;transform:rotate(-5deg) scale(1.04)}
+.fortune-cookie-card.opened:hover{transform:translateY(-3px);box-shadow:0 12px 24px rgba(105,89,55,.15)}
+.fortune-cookie-card strong{font-family:"Onest",sans-serif;font-size:14px;color:#536a56}
+.fortune-cookie-card .cookie-state{font-size:11px;color:#849087}
+.fortune-cookie-card.opened .cookie-state{font-weight:800;color:#357c70}
+.cookie-lock{position:absolute;right:12px;top:10px;font-size:15px;opacity:.7}
+.fortune-collection-note{font-size:12px;color:#6f8583;margin:14px 0 0}
+.cookie-modal{position:fixed;z-index:50;inset:0;display:grid;place-items:center;padding:20px;background:rgba(26,52,59,.45);backdrop-filter:blur(7px)}
+.cookie-modal[hidden]{display:none}
+.cookie-dialog{position:relative;width:min(100%,470px);border-radius:26px;padding:30px 28px 25px;text-align:center;background:linear-gradient(155deg,#fffaf0,#f4f0da 53%,#e8f3ed);border:1px solid rgba(255,255,255,.9);box-shadow:0 24px 80px rgba(18,49,53,.26);animation:cookiePop .22s ease-out}
+@keyframes cookiePop{from{opacity:0;transform:translateY(10px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
+.cookie-dialog .cookie-svg{width:150px;height:110px;margin:0 auto 7px}
+.cookie-dialog .eyebrow{margin-bottom:10px}
+.cookie-dialog h2{font-size:25px;color:#315467;margin:0 0 12px}
+.cookie-fortune{font-family:"Onest",sans-serif;font-size:19px;line-height:1.45;color:#415d4d;margin:0 0 13px}
+.cookie-reflection{font-size:14px;line-height:1.55;color:#647b75;margin:0 auto 20px;max-width:360px}
+.cookie-close{position:absolute;right:14px;top:12px;background:rgba(255,255,255,.65);color:#637772;border:1px solid rgba(111,145,132,.18);border-radius:50%;width:36px;height:36px;padding:0;font-size:22px;line-height:1}
+.cookie-dialog .primary{min-width:170px}
+@media(max-width:680px){.streak-gift{grid-template-columns:92px minmax(0,1fr);gap:13px;padding:16px}.streak-gift-art{min-height:100px}.streak-gift-art .cookie-svg{width:86px;height:70px}.cookie-spark{right:8px;top:5px;font-size:16px}.streak-gift h2{font-size:18px}.streak-gift p{font-size:12px}.fortune-cookie-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.fortune-cookie-card{min-height:156px}.fortune-cookie-card .cookie-svg{width:90px;height:68px}.cookie-dialog{padding:27px 21px 22px}.cookie-fortune{font-size:18px}}
+@media(max-width:390px){.streak-gift{grid-template-columns:1fr}.streak-gift-art{min-height:88px}.gift-progress-wrap{gap:7px}.gift-progress-label{font-size:11px}}
+
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="top">
+    <div class="brand-lockup" aria-label="Ритм — трекер настроения">
+      <div class="brand">ритм<span>.</span></div>
+      <svg class="brand-wave" viewBox="0 0 76 28" role="img" aria-label="Линия настроения">
+        <path d="M2 16 H13 L20 11 L27 20 L36 7 L44 17 L51 13 L57 16 H74" />
+      </svg>
+    </div>
+    <div class="pill">Демо-версия · данные на этом устройстве</div>
+  </header>
+  <section class="panel hero">
+    <h1>Замечать своё состояние — уже забота о себе.</h1>
+    <p>Отмечайте настроение столько раз, сколько вам нужно. Со временем график поможет замечать изменения, а короткие материалы — лучше понимать себя.</p>
+    <div class="actions"><span class="tag">Без лимита отметок</span><span class="tag">Личный дневник</span><span class="tag">Без постановки диагнозов</span></div>
+  </section>
+  <nav class="tabs" aria-label="Разделы">
+    <button class="tab active" data-tab="tracker">Настроение</button>
+    <button class="tab" data-tab="history">История</button>
+    <button class="tab" data-tab="therapy">Терапия</button>
+  </nav>
+  <main>
+    <section class="tabpane active" id="tracker">
+      <div class="panel streak-gift" aria-live="polite">
+        <div class="streak-gift-art" aria-hidden="true">
+          <svg class="cookie-svg" viewBox="0 0 128 92">
+            <defs><linearGradient id="cookieA" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f7d98c"/><stop offset="1" stop-color="#c9873f"/></linearGradient><linearGradient id="cookieB" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffe8ad"/><stop offset="1" stop-color="#d69a4c"/></linearGradient></defs>
+            <path d="M17 57C9 45 14 27 29 17c13-9 26 0 34 15-5 18-18 31-36 37-4 1-8-4-10-12Z" fill="url(#cookieA)" stroke="#b87b3d" stroke-width="2"/>
+            <path d="M62 32C69 15 87 9 102 20c14 10 12 30-2 43-12 11-27 5-38-10 5-7 5-14 0-21Z" fill="url(#cookieB)" stroke="#b87b3d" stroke-width="2"/>
+            <path d="M27 28c9-8 19-5 25 5M81 26c8-7 17-4 22 4M30 59c9-2 17-10 23-20M83 62c8-3 15-10 18-18" fill="none" stroke="#fff0c9" stroke-width="3" stroke-linecap="round" opacity=".72"/>
+            <path d="M60 43 111 34l4 12-49 12Z" fill="#fffdf0" stroke="#d8c99e" stroke-width="1.5"/>
+            <path d="m72 45 31-6" stroke="#d4c69e" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="3 4"/>
+          </svg><span class="cookie-spark">✦</span>
+        </div>
+        <div class="streak-gift-copy">
+          <span class="eyebrow">Маленький подарок за регулярность</span>
+          <h2>7 дней подряд — и печенька с предсказанием ваша!</h2>
+          <p>Отмечайте настроение хотя бы один раз в день семь дней подряд. В награду вас будет ждать печенька с маленьким предсказанием и доброй подсказкой.</p>
+          <div class="gift-progress-wrap"><div class="gift-progress" role="progressbar" aria-label="Прогресс до подарочной печеньки" aria-valuemin="0" aria-valuemax="7" aria-valuenow="0"><span id="giftProgressBar"></span></div><span class="gift-progress-label" id="giftProgressLabel">0 из 7 дней</span></div>
+          <span class="gift-message" id="giftMessage">Каждый день — ещё один шаг к подарку.</span>
+          <button type="button" class="gift-collection-link" id="giftCollectionButton">Посмотреть коллекцию печенек</button>
+        </div>
+      </div>
+      <div class="panel">
+        <h2>Как вы себя чувствуете сейчас?</h2>
+        <p class="muted">Выберите один из пяти уровней. Можно сохранять новые отметки в любое время.</p>
+        <div class="moods" id="moods">
+          <button class="mood" data-mood="1"><span class="face"><svg class="face-svg" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="25"/><circle class="eye-dot" cx="23" cy="26" r="2.5"/><circle class="eye-dot" cx="41" cy="26" r="2.5"/><path class="mouth" d="M20 45 Q32 32 44 45"/></svg></span><span>Очень тяжело</span></button>
+          <button class="mood" data-mood="2"><span class="face"><svg class="face-svg" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="25"/><circle class="eye-dot" cx="23" cy="26" r="2.5"/><circle class="eye-dot" cx="41" cy="26" r="2.5"/><path class="mouth" d="M21 42 Q32 34 43 42"/></svg></span><span>Тяжело</span></button>
+          <button class="mood" data-mood="3"><span class="face"><svg class="face-svg" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="25"/><circle class="eye-dot" cx="23" cy="26" r="2.5"/><circle class="eye-dot" cx="41" cy="26" r="2.5"/><path class="mouth" d="M21 41 H43"/></svg></span><span>Нейтрально</span></button>
+          <button class="mood" data-mood="4"><span class="face"><svg class="face-svg" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="25"/><path class="eye" d="M19 27 Q23 22 28 27 M36 27 Q41 22 45 27"/><path class="mouth" d="M20 37 Q32 50 44 37"/></svg></span><span>Хорошо</span></button>
+          <button class="mood" data-mood="5"><span class="face"><svg class="face-svg" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="25"/><path class="eye" d="M18 27 Q23 20 29 27 M35 27 Q41 20 46 27"/><path class="mouth-open" d="M19 36 Q32 55 45 36 Q43 49 32 50 Q21 49 19 36 Z"/></svg></span><span>Очень хорошо</span></button>
+        </div>
+        <label for="comment"><strong>Комментарий</strong></label>
+        <textarea id="comment" class="field" rows="3" placeholder="Напишите комментарий или используйте это поле как личный дневник"></textarea>
+        <p class="privacy">Комментарии никак не анализируются и не используются для определения симптомов. Они сохраняются только вместе с отметками в вашей Истории на этом устройстве и не передаются специалистам или рекламным сервисам.</p>
+        <div class="actions"><button class="primary" id="saveMood" disabled>Сохранить отметку</button><span class="small muted" id="selectedLabel">Выберите настроение</span></div>
+        <div class="notice" id="screeningNotice" hidden></div>
+      </div>
+      <div class="panel">
+        <h2>Ваш ритм</h2>
+        <div class="statrow">
+          <div class="stat"><span class="small muted">Отметок всего</span><strong id="totalCount">0</strong></div>
+          <div class="stat"><span class="small muted">Дней подряд</span><strong id="streakCount">0</strong></div>
+          <div class="stat"><span class="small muted">Средний уровень</span><strong id="averageMood">—</strong></div>
+        </div>
+        <p class="small muted" style="margin-top:12px">Отметки не ограничены ни в бесплатной, ни в Premium-версии.</p>
+      </div>
     </section>
-    <nav class="tabs" aria-label="Разделы">
-      <button class="tab active" data-tab="tracker">Настроение</button>
-      <button class="tab" data-tab="history">История</button>
-      <button class="tab" data-tab="library">Карточки</button>
-    </nav>
-    <main>
-      <section class="tabpane active" id="tracker">
-        <div class="panel">
-          <h2>Как вы себя чувствуете сейчас?</h2>
-          <p class="muted">Выберите один из пяти уровней. Можно сохранять новые отметки в любое время.</p>
-          <div class="moods" id="moods">
-            <button class="mood" data-mood="1"><span class="face">☹</span><span>Очень тяжело</span></button>
-            <button class="mood" data-mood="2"><span class="face">🙁</span><span>Тяжело</span></button>
-            <button class="mood" data-mood="3"><span class="face">😐</span><span>Нейтрально</span></button>
-            <button class="mood" data-mood="4"><span class="face">🙂</span><span>Хорошо</span></button>
-            <button class="mood" data-mood="5"><span class="face">☺</span><span>Очень хорошо</span></button>
-          </div>
-          <label for="comment"><strong>Комментарий</strong></label>
-          <textarea id="comment" class="field" rows="3" placeholder="Напишите комментарий или используйте это поле как личный дневник"></textarea>
-          <p class="privacy">Важно: в этом прототипе текст комментариев хранится локально в браузере. Он не анализируется и не используется для определения симптомов.</p>
-          <div class="actions"><button class="primary" id="saveMood" disabled>Сохранить отметку</button><span class="small muted" id="selectedLabel">Выберите настроение</span></div>
-          <div class="notice" id="screeningNotice" hidden></div>
+    <section class="tabpane" id="history">
+      <div class="panel">
+        <div class="sectionhead"><h2>График настроения</h2><span class="small muted">Уровень настроения · 1–5</span></div>
+        <div id="chartWrap"><div class="empty">После первой отметки здесь появится график.</div></div>
+      </div>
+      <div class="panel">
+        <div class="sectionhead"><h2>История отметок</h2><button class="button-lite" id="exportData">Скачать данные</button></div>
+        <div class="history-sort"><label for="historySort">Порядок отображения</label><select id="historySort" aria-label="Порядок сортировки истории"><option value="newest">От новых к старым</option><option value="oldest">От старых к новым</option></select></div>
+        <p class="muted small">Комментарии остаются частью личного дневника.</p>
+        <div id="historyList"><div class="empty">Пока нет записей. Добавьте первую отметку в разделе «Настроение».</div></div>
+      </div>
+    </section>
+    <section class="tabpane" id="therapy">
+      <div class="panel">
+        <h2>Коллекция печенек с предсказаниями</h2>
+        <p class="muted">За каждые семь дней подряд открывается новая печенька. Нажмите на полученный подарок, чтобы прочитать своё предсказание.</p>
+        <div class="fortune-cookie-grid" id="fortuneCookieGrid" aria-label="Коллекция подарочных печенек"></div>
+        <p class="fortune-collection-note" id="fortuneCollectionStatus">Первая печенька появится после семи дней подряд с отметками настроения.</p>
+      </div>
+      <div class="panel">
+        <h2>Какое направление психотерапии мне подходит?</h2>
+        <p class="muted">Познакомьтесь с разными подходами и выберите самый интересный.</p>
+        <div class="card-grid" id="therapyGrid" aria-live="polite"></div>
+        <div class="therapy-pagination" aria-label="Страницы направлений"><button type="button" class="button-lite" id="approachPrev" disabled>← Назад</button><span id="approachPageLabel" class="small muted">1–4 из 12</span><button type="button" class="button-lite" id="approachNext">Ещё 4 →</button></div>
+        <div class="selection-tools"><p class="selection-note" id="selectionNote" aria-live="polite">Можно выбрать до двух направлений.</p><div class="selection-actions"><button type="button" class="find-therapist" id="findSelectedTherapist" hidden>Найти терапевта в одном из подходов</button><button type="button" class="reset-direction" id="resetApproaches" hidden>Сбросить выбор</button></div></div>
+      </div>
+      <div class="panel" id="approachTest">
+        <h2>Небольшой тест для выбора направления</h2>
+        <p class="muted">Ответьте на несколько вопросов о том, какой формат исследования трудностей вам ближе.</p>
+        <div id="quizArea">
+          <div class="sectionhead"><strong id="quizCounter">Вопрос 1 из 10</strong><span class="small muted">Ознакомительный тест</span></div>
+          <div class="quiz-progress"><span id="quizProgress" style="width:10%"></span></div>
+          <h3 id="quizQuestion">Что вам было бы интереснее исследовать в первую очередь?</h3>
+          <div id="quizOptions"></div>
+          <div class="quiz-controls"><button class="button-lite" id="quizBack" disabled>Назад</button><button class="primary" id="quizNext" disabled>Далее</button></div>
         </div>
-        <div class="panel">
-          <div class="sectionhead"><h2>Ваш график</h2><span class="small muted">Уровень настроения · 1–5</span></div>
-          <div id="chartWrap"><div class="empty">После первой отметки здесь появится график.</div></div>
+        <div id="quizResult" class="result" hidden aria-live="polite"></div>
+        <p class="small muted" style="margin-top:12px">Тест ознакомительный: он не является психологической диагностикой и не определяет единственно подходящее направление. Выбор метода лучше обсуждать со специалистом.</p>
+      </div>
+      <div class="panel" id="consultationPanel">
+        <h2>Нужна консультация?</h2>
+        <p class="muted">Оставьте заявку координатору, который поможет вам подобрать специалиста.</p>
+        <div class="contact-options">
+          <button type="button" class="contact-option" id="emailContact"><span class="contact-icon">@</span><span><strong>По электронной почте</strong><br><span class="small muted">Написать координатору</span></span></button>
+          <button type="button" class="contact-option" id="telegramContact"><span class="contact-icon">➤</span><span><strong>В Telegram</strong><br><span class="small muted">Оставить сообщение</span></span></button>
         </div>
-        <div class="panel">
-          <h2>Ваш ритм</h2>
-          <div class="statrow">
-            <div class="stat"><span class="small muted">Отметок всего</span><strong id="totalCount">0</strong></div>
-            <div class="stat"><span class="small muted">Дней подряд</span><strong id="streakCount">0</strong></div>
-            <div class="stat"><span class="small muted">Средний уровень</span><strong id="averageMood">—</strong></div>
-          </div>
-          <p class="small muted" style="margin-top:12px">Отметки не ограничены ни в бесплатной, ни в Premium-версии.</p>
-        </div>
-      </section>
-      <section class="tabpane" id="history">
-        <div class="panel">
-          <div class="sectionhead"><h2>История отметок</h2><button class="button-lite" id="exportData">Скачать данные</button></div>
-          <p class="muted small">Записи отсортированы от новых к старым. Комментарии остаются частью личного дневника.</p>
-          <div id="historyList"><div class="empty">Пока нет записей. Добавьте первую отметку в разделе «Настроение».</div></div>
-        </div>
-      </section>
-      <section class="tabpane" id="library">
-        <div class="panel">
-          <h2>Какое направление психотерапии вам подходит?</h2>
-          <p class="muted">Познакомьтесь с разными подходами. Короткое описание помогает сориентироваться, но не заменяет консультацию специалиста.</p>
-          <div class="card-grid" id="therapyGrid">
-            <article class="topic-card"><h3>Нарративная практика</h3><p>Помогает отделять человека от проблемы, исследовать влияние историй о себе и находить исключения из привычных сценариев.</p><button class="button-lite" data-info="narrative">Подробнее</button></article>
-            <article class="topic-card"><h3>Когнитивно-поведенческая терапия</h3><p>Исследует связи мыслей, эмоций и действий; часто включает практические упражнения между встречами.</p><button class="button-lite" data-info="cbt">Подробнее</button></article>
-            <article class="topic-card"><h3>Гештальт-терапия</h3><p>Уделяет внимание переживаниям в настоящем, осознаванию потребностей и отношениям с другими людьми.</p><button class="button-lite" data-info="gestalt">Подробнее</button></article>
-            <article class="topic-card"><h3>Системная терапия</h3><p>Рассматривает трудности в контексте отношений, семейных и других систем взаимодействия.</p><button class="button-lite" data-info="systemic">Подробнее</button></article>
-          </div>
-          <div id="therapyDetail" class="notice" hidden></div>
-        </div>
-        <div class="panel">
-          <h2>Мини-викторина</h2>
-          <p id="quizQuestion">Когда вы сталкиваетесь с трудностью, что вам было бы полезнее исследовать в первую очередь?</p>
-          <div id="quizOptions">
-            <button class="quiz-option" data-answer="story">Истории о себе и влияние проблемы на жизнь</button>
-            <button class="quiz-option" data-answer="thoughts">Мысли, привычные реакции и небольшие шаги</button>
-            <button class="quiz-option" data-answer="feelings">Чувства, потребности и происходящее сейчас</button>
-            <button class="quiz-option" data-answer="relationships">Отношения и повторяющиеся взаимодействия</button>
-          </div>
-          <div id="quizResult" class="notice" hidden></div>
-          <p class="small muted">Это ознакомительная викторина, а не психологическая диагностика и не способ определить единственно подходящую терапию.</p>
-        </div>
-        <div class="panel">
-          <h2>Нужна консультация?</h2>
-          <p class="muted">В полной версии здесь можно будет выбрать направление и оставить заявку координатору, который поможет подобрать специалиста.</p>
-          <button class="primary" id="consultBtn">Как будет работать запись</button>
-          <div id="consultInfo" class="notice" hidden>В рабочей версии здесь появится защищённая форма заявки. Дневниковые комментарии не будут автоматически передаваться психологу. Передача любой информации должна быть отдельной, прозрачной и согласованной с пользователем.</div>
-        </div>
-      </section>
-    </main>
-    <footer class="bottomnote">Прототип для проверки идеи. Это не медицинский сервис и не заменяет помощь специалиста.</footer>
+        <div id="contactNotice" class="notice" hidden></div>
+        <div style="margin-top:10px"><button type="button" class="reset-direction" id="resetConsultationDirection" hidden>Сбросить выбранное направление</button></div>
+      </div>
+    </section>
+  </main>
+  <div class="cookie-modal" id="cookieModal" hidden role="dialog" aria-modal="true" aria-labelledby="cookieModalTitle">
+    <div class="cookie-dialog">
+      <button type="button" class="cookie-close" id="closeCookie" aria-label="Закрыть">×</button>
+      <svg class="cookie-svg" viewBox="0 0 128 92" aria-hidden="true">
+        <defs><linearGradient id="modalCookieA" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f7d98c"/><stop offset="1" stop-color="#c9873f"/></linearGradient><linearGradient id="modalCookieB" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffe8ad"/><stop offset="1" stop-color="#d69a4c"/></linearGradient></defs>
+        <path d="M17 57C9 45 14 27 29 17c13-9 26 0 34 15-5 18-18 31-36 37-4 1-8-4-10-12Z" fill="url(#modalCookieA)" stroke="#b87b3d" stroke-width="2"/>
+        <path d="M62 32C69 15 87 9 102 20c14 10 12 30-2 43-12 11-27 5-38-10 5-7 5-14 0-21Z" fill="url(#modalCookieB)" stroke="#b87b3d" stroke-width="2"/>
+        <path d="M27 28c9-8 19-5 25 5M81 26c8-7 17-4 22 4M30 59c9-2 17-10 23-20M83 62c8-3 15-10 18-18" fill="none" stroke="#fff0c9" stroke-width="3" stroke-linecap="round" opacity=".72"/>
+        <path d="M60 43 111 34l4 12-49 12Z" fill="#fffdf0" stroke="#d8c99e" stroke-width="1.5"/>
+        <path d="m72 45 31-6" stroke="#d4c69e" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="3 4"/>
+      </svg>
+      <span class="eyebrow">Ваш маленький подарок</span>
+      <h2 id="cookieModalTitle">Предсказание для вас</h2>
+      <p class="cookie-fortune" id="cookieFortuneText"></p>
+      <p class="cookie-reflection" id="cookieReflectionText"></p>
+      <button type="button" class="primary" id="closeCookieBottom">Забрать с собой</button>
+    </div>
   </div>
-  <script>
-  const STORE='ritm_demo_moods_v1';
-  let entries=[];let selectedMood=null;
-  try{entries=JSON.parse(localStorage.getItem(STORE)||'[]')}catch(e){entries=[]}
-  const moodInfo={1:{label:'Очень тяжело',symbol:'☹'},2:{label:'Тяжело',symbol:'🙁'},3:{label:'Нейтрально',symbol:'😐'},4:{label:'Хорошо',symbol:'🙂'},5:{label:'Очень хорошо',symbol:'☺'}};
-  const $=s=>document.querySelector(s);
-  function save(){localStorage.setItem(STORE,JSON.stringify(entries))}
-  function dayKey(d){let x=new Date(d);return x.getFullYear()+'-'+String(x.getMonth()+1).padStart(2,'0')+'-'+String(x.getDate()).padStart(2,'0')}
-  function getStreak(){const days=[...new Set(entries.map(e=>dayKey(e.time)))].sort().reverse();if(!days.length)return 0;let streak=0;let d=new Date();d.setHours(0,0,0,0);for(let i=0;i<days.length;i++){const target=new Date(d);target.setDate(d.getDate()-i);if(days.includes(dayKey(target)))streak++;else break}return streak}
-  document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('active',x===b));document.querySelectorAll('.tabpane').forEach(x=>x.classList.toggle('active',x.id===b.dataset.tab));render()}));
-  document.querySelectorAll('.mood').forEach(b=>b.addEventListener('click',()=>{selectedMood=Number(b.dataset.mood);document.querySelectorAll('.mood').forEach(x=>x.classList.toggle('selected',x===b));$('#saveMood').disabled=false;$('#selectedLabel').textContent='Выбрано: '+moodInfo[selectedMood].label}));
-  $('#saveMood').addEventListener('click',()=>{if(!selectedMood)return;entries.push({id:Date.now()+Math.random(),mood:selectedMood,comment:$('#comment').value.trim(),time:new Date().toISOString()});save();$('#comment').value='';selectedMood=null;document.querySelectorAll('.mood').forEach(x=>x.classList.remove('selected'));$('#saveMood').disabled=true;$('#selectedLabel').textContent='Отметка сохранена';render();});
-  function render(){renderChart();renderHistory();$('#totalCount').textContent=entries.length;$('#streakCount').textContent=getStreak();$('#averageMood').textContent=entries.length?(entries.reduce((a,e)=>a+e.mood,0)/entries.length).toFixed(1).replace('.',','):'—';const recent=entries.slice(-14);const lows=recent.length>=7&&recent.filter(e=>e.mood<=2).length>=6;const n=$('#screeningNotice');if(lows){n.hidden=false;n.textContent='Вы часто отмечаете тяжёлое настроение. Если это состояние сохраняется и влияет на повседневную жизнь, можно обсудить его со специалистом. Скрининг может быть предложен только по заранее определённым правилам отметок — не по тексту дневника. Одна лишь последовательность отметок не позволяет поставить диагноз.'}else n.hidden=true;}
-  function renderChart(){const wrap=$('#chartWrap');if(!entries.length){wrap.innerHTML='<div class="empty">После первой отметки здесь появится график.</div>';return}const data=entries.slice(-20);const W=800,H=220,L=35,R=18,T=20,B=35;const iw=W-L-R,ih=H-T-B;const y=v=>T+(5-v)/4*ih;const x=i=>L+(data.length===1?iw/2:i/(data.length-1)*iw);let svg=`<svg class="chart" viewBox="0 0 ${W} ${H}" role="img" aria-label="График настроения">`;for(let v=1;v<=5;v++){svg+=`<line x1="${L}" y1="${y(v)}" x2="${W-R}" y2="${y(v)}" stroke="#e5e7e4" stroke-width="1"/><text x="8" y="${y(v)+4}" font-size="12" fill="#6f777b">${v}</text>`}if(data.length>1)svg+=`<polyline points="${data.map((d,i)=>x(i)+','+y(d.mood)).join(' ')}" fill="none" stroke="#496e69" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>`;data.forEach((d,i)=>{svg+=`<circle cx="${x(i)}" cy="${y(d.mood)}" r="5" fill="#496e69"/><title>${new Date(d.time).toLocaleString('ru-RU')}: ${d.mood}/5</title>`});svg+=`<text x="${L}" y="${H-8}" font-size="12" fill="#6f777b">${new Date(data[0].time).toLocaleDateString('ru-RU')}</text><text x="${W-R}" y="${H-8}" text-anchor="end" font-size="12" fill="#6f777b">${new Date(data[data.length-1].time).toLocaleDateString('ru-RU')}</text></svg>`;wrap.innerHTML=svg}
-  function renderHistory(){const wrap=$('#historyList');if(!entries.length){wrap.innerHTML='<div class="empty">Пока нет записей. Добавьте первую отметку в разделе «Настроение».</div>';return}wrap.innerHTML=entries.slice().reverse().map(e=>`<div class="history-item"><div class="mini">${moodInfo[e.mood].symbol}</div><div><strong>${moodInfo[e.mood].label}</strong><div class="small muted">${new Date(e.time).toLocaleString('ru-RU')}</div>${e.comment?`<p style="margin:7px 0 0;white-space:pre-wrap">${escapeHtml(e.comment)}</p>`:'<p class="small muted" style="margin:5px 0 0">Без комментария</p>'}</div><span class="tag">${e.mood}/5</span></div>`).join('')}
-  function escapeHtml(s){return s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
-  $('#exportData').addEventListener('click',()=>{const blob=new Blob([JSON.stringify(entries,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='ritm-mood-data.json';a.click();URL.revokeObjectURL(a.href)});
-  const therapyText={narrative:'Нарративная практика: исследует, как проблема влияет на жизнь и какие ценности, навыки и исключения помогают человеку формировать предпочитаемую историю о себе.',cbt:'КПТ: может подойти тем, кому интересна структурированная работа с мыслями, эмоциями и поведением, с практикой конкретных навыков.',gestalt:'Гештальт-терапия: может быть интересна для исследования чувств, потребностей, осознавания и способов выстраивать контакт.',systemic:'Системная терапия: помогает рассматривать трудности в контексте отношений и повторяющихся способов взаимодействия. Выбор направления лучше обсуждать со специалистом.'};
-  document.querySelectorAll('[data-info]').forEach(b=>b.addEventListener('click',()=>{const d=$('#therapyDetail');d.hidden=false;d.textContent=therapyText[b.dataset.info]}));
-  const quizMap={story:'Возможно, вам будет интересно познакомиться с нарративной практикой. Это лишь отправная точка для изучения подходов, а не персональная рекомендация.',thoughts:'Возможно, вам будет интересно узнать о когнитивно-поведенческой терапии. Подход и специалист выбираются с учётом вашего запроса.',feelings:'Возможно, вам будет интересно познакомиться с гештальт-терапией и подходами, уделяющими внимание переживаниям в настоящем.',relationships:'Возможно, вам будет интересно узнать о системной терапии и работе с отношениями.'};
-  document.querySelectorAll('[data-answer]').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('[data-answer]').forEach(x=>x.classList.toggle('chosen',x===b));const r=$('#quizResult');r.hidden=false;r.textContent=quizMap[b.dataset.answer]+' Разные направления могут быть полезны одному человеку; результат не является диагностикой.'}));
-  $('#consultBtn').addEventListener('click',()=>$('#consultInfo').hidden=!$('#consultInfo').hidden);
-  render();
-  </script>
+  <footer class="bottomnote">Прототип для проверки идеи. Это не медицинский сервис и не заменяет помощь специалиста.</footer>
+</div>
+<script>
+const STORE='ritm_demo_moods_v1';
+const APPROACH_STORE='ritm_selected_approaches_v1';
+const COOKIE_STORE='ritm_unlocked_fortune_cookies_v1';
+// Добавим реальные контакты координатора сюда, когда они будут известны.
+const COORDINATOR_EMAIL='';
+const COORDINATOR_TELEGRAM=''; // Например: https://t.me/username
+let entries=[];let selectedMood=null;let selectedApproaches=[];let unlockedCookieIds=[];
+try{entries=JSON.parse(localStorage.getItem(STORE)||'[]')}catch(e){entries=[]}
+try{unlockedCookieIds=JSON.parse(localStorage.getItem(COOKIE_STORE)||'[]')}catch(e){unlockedCookieIds=[]}
+const fortuneCookies=[
+ {id:1,fortune:'На этой неделе ты можешь заметить: маленький шаг меняет больше, чем кажется.',reflection:'Подсказка: выбери одно небольшое дело, которому сегодня можно уделить всего десять минут.'},
+ {id:2,fortune:'Тебе не обязательно решать всё сразу. Иногда ясность приходит после паузы.',reflection:'Попробуй спросить себя: что может подождать, а что действительно важно сейчас?'},
+ {id:3,fortune:'Возможно, рядом уже есть возможность, которую ты пока не рассматривал(а).',reflection:'Посмотри на привычную ситуацию под немного другим углом. Что ещё здесь возможно?'},
+ {id:4,fortune:'Одно честное «мне так не подходит» может освободить место для чего-то важного.',reflection:'Подумай, где тебе хотелось бы обозначить небольшую, но значимую границу.'},
+ {id:5,fortune:'Твоя устойчивость может проявиться не в том, чтобы справиться в одиночку, а в просьбе о поддержке.',reflection:'К кому ты мог(ла) бы обратиться, не дожидаясь, пока станет совсем трудно?'},
+ {id:6,fortune:'Ты уже умеешь больше, чем иногда замечаешь. Сегодня стоит поискать этому доказательства.',reflection:'Вспомни один недавний момент, когда ты поступил(а) чуть иначе, чем раньше.'},
+ {id:7,fortune:'Можно менять маршрут и при этом не обесценивать весь пройденный путь.',reflection:'Какой опыт из прошлого ты хотел(а) бы взять с собой в следующий этап?'},
+ {id:8,fortune:'На этой неделе забота о себе может оказаться похожей на разрешение сделать меньше.',reflection:'Что можно упростить, перенести или выполнить не идеально — и этого будет достаточно?'},
+ {id:9,fortune:'Твой темп имеет значение. Не каждое важное изменение должно быть быстрым.',reflection:'Выбери один шаг, который будет посильным именно в твоём сегодняшнем ритме.'},
+ {id:10,fortune:'Любопытство может открыть дверь там, где самокритика оставляет только стену.',reflection:'Вместо «почему я опять так сделал(а)?» попробуй спросить: «что со мной тогда происходило?»'},
+ {id:11,fortune:'Иногда новый поворот начинается с вопроса, который ты раньше себе не задавал(а).',reflection:'Какой вопрос о себе или своей жизни тебе сейчас интересно исследовать?'},
+ {id:12,fortune:'Сегодняшняя маленькая забота о себе может стать опорой для завтрашнего дня.',reflection:'Какое простое действие поможет тебе почувствовать чуть больше спокойствия или пространства?'}
+];
+try{selectedApproaches=JSON.parse(localStorage.getItem(APPROACH_STORE)||'[]')}catch(e){selectedApproaches=[]}
+const moodInfo={1:{label:'Очень тяжело',symbol:'☹'},2:{label:'Тяжело',symbol:'🙁'},3:{label:'Нейтрально',symbol:'😐'},4:{label:'Хорошо',symbol:'🙂'},5:{label:'Очень хорошо',symbol:'😄'}};
+const approaches={
+ narrative:{name:'Нарративная практика',description:'Проблема — это не вы целиком. Вместе с практиком можно отделить её влияние от собственной личности, найти истории о стойкости, ценностях и поступках, которые проблема заслоняла, и написать более подходящую вам историю жизни.'},
+ cbt:{name:'Когнитивно-поведенческая терапия (КПТ)',description:'Когда мысли закручиваются по кругу, а привычные реакции только усиливают трудность, КПТ помогает увидеть эту цепочку и попробовать новые действия. Это совместная, обычно достаточно структурированная работа с понятными целями и практикой между встречами.'},
+ gestalt:{name:'Гештальт-терапия',description:'Что вы чувствуете прямо сейчас? Чего хотите, но не разрешаете себе? Гештальт-терапия помогает внимательнее замечать эмоции, телесные сигналы, потребности и привычные способы строить отношения — чтобы выбирать, как поступать, а не действовать на автопилоте.'},
+ systemic:{name:'Системная терапия',description:'Иногда проблема живёт не только внутри человека, но и в круге повторяющихся взаимодействий. Системный взгляд помогает заметить роли, правила и сценарии в семье, паре или другом окружении и найти новые способы разговаривать и влиять на ситуацию.'},
+ orkt:{name:'ОРКТ — ориентированная на решение краткосрочная терапия',description:'Вместо бесконечного разбора того, что не работает, исследуем, как будет выглядеть жизнь, когда станет хоть немного лучше. Что уже помогает? Когда проблема отступает? Какие маленькие шаги приблизят желаемое? Подход фокусируется на ресурсах, исключениях и достижимых изменениях.'},
+ eit:{name:'Эмоционально-образная терапия',description:'Иногда переживание легче почувствовать как образ, чем сразу объяснить словами. В бережной работе с возникающими образами можно исследовать внутренние конфликты, чувства и потребности, найти личный смысл переживания и попробовать изменить отношение к нему. Метод подходит не всем — важны темп и чувство безопасности.'},
+ dbt:{name:'ДБТ — диалектическая поведенческая терапия',description:'Для моментов, когда эмоции накрывают с головой и трудно удержаться от импульсивных действий. ДБТ сочетает принятие себя с изменениями и учит конкретным навыкам: переживать кризис, регулировать эмоции, внимательнее относиться к себе и говорить о своих границах.'},
+ schema:{name:'Схема-терапия',description:'Почему одни и те же болезненные сценарии повторяются в отношениях и в отношении к себе? Схема-терапия исследует глубоко укоренившиеся убеждения и неудовлетворённые эмоциональные потребности, помогает распознавать старые сценарии и развивать более поддерживающий внутренний голос.'},
+ psychoanalysis:{name:'Психоанализ и психодинамическая терапия',description:'У повторяющихся чувств и выборов иногда есть история, которую мы пока не вполне понимаем. Внимательное исследование отношений, внутренних противоречий, защит и прошлого опыта помогает увидеть скрытые закономерности и лучше понять, почему некоторые ситуации так сильно на нас влияют.'},
+ act:{name:'Терапия принятия и ответственности (ACT)',description:'Не обязательно сначала победить тревогу или избавиться от неприятных мыслей, чтобы жить важной для себя жизнью. ACT помогает замечать мысли, не подчиняться им автоматически, освобождать место для чувств и делать шаги в сторону собственных ценностей — даже когда внутри непросто.'},
+ existential:{name:'Экзистенциальная терапия',description:'Вопросы выбора, свободы, одиночества, смысла и конечности жизни не всегда решаются готовыми советами. Этот подход создаёт пространство, чтобы честно исследовать, что для вас важно, какие решения принадлежат именно вам и как жить более осмысленно в реальных обстоятельствах.'},
+ eft:{name:'Эмоционально-фокусированная терапия',description:'Эмоции не просто мешают — они часто показывают, что для нас важно и в чём мы нуждаемся. В эмоционально-фокусированной работе учатся распознавать чувства глубже, понимать потребности за защитными реакциями и создавать более безопасный контакт с собой и близкими.'}
+};
+const approachNames=Object.fromEntries(Object.entries(approaches).map(([key,value])=>[key,value.name]));
+const approachOrder=Object.keys(approaches);let approachPage=0;const APPROACHES_PER_PAGE=4;const MAX_SELECTED_APPROACHES=2;let selectionLimitReached=false;
+selectedApproaches=Array.isArray(selectedApproaches)?[...new Set(selectedApproaches.filter(key=>approaches[key]))].slice(0,MAX_SELECTED_APPROACHES):[];
+if(selectedApproaches.length)localStorage.setItem(APPROACH_STORE,JSON.stringify(selectedApproaches));else localStorage.removeItem(APPROACH_STORE);
+const $=s=>document.querySelector(s);
+function save(){localStorage.setItem(STORE,JSON.stringify(entries))}
+function dayKey(d){let x=new Date(d);return x.getFullYear()+'-'+String(x.getMonth()+1).padStart(2,'0')+'-'+String(x.getDate()).padStart(2,'0')}
+function getStreak(){const days=new Set(entries.map(e=>dayKey(e.time)));if(!days.size)return 0;let anchor=new Date();anchor.setHours(0,0,0,0);if(!days.has(dayKey(anchor)))anchor.setDate(anchor.getDate()-1);let streak=0;while(days.has(dayKey(anchor))){streak++;anchor.setDate(anchor.getDate()-1)}return streak}
+function calculateEarnedCookieCount(){const days=[...new Set(entries.map(e=>dayKey(e.time)))].sort();let run=0,previous=null,rewards=0;for(const day of days){const stamp=Date.parse(day+'T00:00:00Z');run=previous!==null&&stamp-previous===86400000?run+1:1;if(run%7===0)rewards++;previous=stamp}return Math.min(rewards,fortuneCookies.length)}
+function syncUnlockedCookies(){const earned=calculateEarnedCookieCount();const existing=new Set((Array.isArray(unlockedCookieIds)?unlockedCookieIds:[]).filter(n=>Number.isInteger(n)&&n>=1&&n<=fortuneCookies.length));for(let i=1;i<=earned;i++)existing.add(i);unlockedCookieIds=[...existing].sort((a,b)=>a-b);localStorage.setItem(COOKIE_STORE,JSON.stringify(unlockedCookieIds))}
+function cookieSvgMarkup(){return `<svg class="cookie-svg" viewBox="0 0 128 92" aria-hidden="true"><defs><linearGradient id="cookieCardA" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f7d98c"/><stop offset="1" stop-color="#c9873f"/></linearGradient><linearGradient id="cookieCardB" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffe8ad"/><stop offset="1" stop-color="#d69a4c"/></linearGradient></defs><path d="M17 57C9 45 14 27 29 17c13-9 26 0 34 15-5 18-18 31-36 37-4 1-8-4-10-12Z" fill="url(#cookieCardA)" stroke="#b87b3d" stroke-width="2"/><path d="M62 32C69 15 87 9 102 20c14 10 12 30-2 43-12 11-27 5-38-10 5-7 5-14 0-21Z" fill="url(#cookieCardB)" stroke="#b87b3d" stroke-width="2"/><path d="M27 28c9-8 19-5 25 5M81 26c8-7 17-4 22 4M30 59c9-2 17-10 23-20M83 62c8-3 15-10 18-18" fill="none" stroke="#fff0c9" stroke-width="3" stroke-linecap="round" opacity=".72"/><path d="M60 43 111 34l4 12-49 12Z" fill="#fffdf0" stroke="#d8c99e" stroke-width="1.5"/><path d="m72 45 31-6" stroke="#d4c69e" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="3 4"/></svg>`}
+function renderGiftProgress(){const streak=getStreak();let progress=streak%7;if(streak>0&&progress===0)progress=7;const bar=$('#giftProgressBar');if(bar)bar.style.width=(progress/7*100)+'%';const label=$('#giftProgressLabel');if(label)label.textContent=progress+' из 7 дней';const progressbar=bar?.parentElement;if(progressbar)progressbar.setAttribute('aria-valuenow',String(progress));const msg=$('#giftMessage');if(msg){if(progress===7)msg.textContent='Подарок уже открыт! Загляните в коллекцию «Терапия».';else if(progress>0)msg.textContent=`До следующей печеньки осталось ${7-progress} ${7-progress===1?'день':'дней'}. Продолжайте в своём ритме!`;else if(unlockedCookieIds.length)msg.textContent='Ваши уже полученные печеньки останутся в коллекции. Начните новый семидневный круг.';else msg.textContent='Каждый день — ещё один шаг к подарку.'}}
+function renderFortuneCookies(){const grid=$('#fortuneCookieGrid');if(!grid)return;grid.innerHTML=fortuneCookies.map(cookie=>{const unlocked=unlockedCookieIds.includes(cookie.id);return `<button type="button" class="fortune-cookie-card ${unlocked?'opened':''}" data-cookie-id="${cookie.id}" ${unlocked?'':'disabled'} aria-label="${unlocked?'Открыть печеньку '+cookie.id:'Закрытая печенька '+cookie.id+' — награда за семь дней подряд'}">${unlocked?'':`<span class="cookie-lock">▣</span>`}${cookieSvgMarkup()}<strong>${unlocked?'Печенька-предсказание':`Печенька №${cookie.id}`}</strong><span class="cookie-state">${unlocked?'Нажмите, чтобы открыть':'Подарок за 7 дней подряд'}</span></button>`}).join('');const status=$('#fortuneCollectionStatus');if(status){const n=unlockedCookieIds.length;status.textContent=n?`У вас открыто печенек: ${n}. Новая появляется за каждые следующие 7 дней подряд.`:'Первая печенька появится после семи дней подряд с отметками настроения.'}}
+function openFortuneCookie(id){const cookie=fortuneCookies.find(c=>c.id===id);if(!cookie||!unlockedCookieIds.includes(id))return;$('#cookieModalTitle').textContent=`Печенька-предсказание №${id}`;$('#cookieFortuneText').textContent='«'+cookie.fortune+'»';$('#cookieReflectionText').textContent=cookie.reflection;$('#cookieModal').hidden=false;$('#closeCookie').focus()}
+function closeFortuneCookie(){$('#cookieModal').hidden=true}
+
+document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('active',x===b));document.querySelectorAll('.tabpane').forEach(x=>x.classList.toggle('active',x.id===b.dataset.tab));render()}));
+$('#giftCollectionButton').addEventListener('click',()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('active',x.dataset.tab==='therapy'));document.querySelectorAll('.tabpane').forEach(x=>x.classList.toggle('active',x.id==='therapy'));$('#fortuneCookieGrid').scrollIntoView({behavior:'smooth',block:'center'})});
+$('#fortuneCookieGrid').addEventListener('click',event=>{const card=event.target.closest('[data-cookie-id]');if(card&&!card.disabled)openFortuneCookie(Number(card.dataset.cookieId))});
+$('#closeCookie').addEventListener('click',closeFortuneCookie);$('#closeCookieBottom').addEventListener('click',closeFortuneCookie);$('#cookieModal').addEventListener('click',event=>{if(event.target.id==='cookieModal')closeFortuneCookie()});document.addEventListener('keydown',event=>{if(event.key==='Escape'&&!$('#cookieModal').hidden)closeFortuneCookie()});
+document.querySelectorAll('.mood').forEach(b=>b.addEventListener('click',()=>{selectedMood=Number(b.dataset.mood);document.querySelectorAll('.mood').forEach(x=>x.classList.toggle('selected',x===b));$('#saveMood').disabled=false;$('#selectedLabel').textContent='Выбрано: '+moodInfo[selectedMood].label}));
+$('#saveMood').addEventListener('click',()=>{if(!selectedMood)return;entries.push({id:Date.now()+Math.random(),mood:selectedMood,comment:$('#comment').value.trim(),time:new Date().toISOString()});save();$('#comment').value='';selectedMood=null;document.querySelectorAll('.mood').forEach(x=>x.classList.remove('selected'));$('#saveMood').disabled=true;$('#selectedLabel').textContent='Отметка сохранена';render();});
+function render(){syncUnlockedCookies();renderGiftProgress();renderFortuneCookies();renderChart();renderHistory();$('#totalCount').textContent=entries.length;$('#streakCount').textContent=getStreak();$('#averageMood').textContent=entries.length?(entries.reduce((a,e)=>a+e.mood,0)/entries.length).toFixed(1).replace('.',','):'—';const recent=entries.slice(-14);const lows=recent.length>=7&&recent.filter(e=>e.mood<=2).length>=6;const n=$('#screeningNotice');if(lows){n.hidden=false;n.textContent='Вы часто отмечаете тяжёлое настроение. Если это состояние сохраняется и влияет на повседневную жизнь, можно обсудить его со специалистом. Одна лишь последовательность отметок не позволяет поставить диагноз.'}else n.hidden=true;}
+function renderChart(){const wrap=$('#chartWrap');if(!entries.length){wrap.innerHTML='<div class="empty">После первой отметки здесь появится график.</div>';return}const data=entries.slice(-20);const W=800,H=220,L=35,R=18,T=20,B=35;const iw=W-L-R,ih=H-T-B;const y=v=>T+(5-v)/4*ih;const x=i=>L+(data.length===1?iw/2:i/(data.length-1)*iw);let svg=`<svg class="chart" viewBox="0 0 ${W} ${H}" role="img" aria-label="График настроения">`;for(let v=1;v<=5;v++){svg+=`<line x1="${L}" y1="${y(v)}" x2="${W-R}" y2="${y(v)}" stroke="#e9e3d6" stroke-width="1"/><text x="8" y="${y(v)+4}" font-size="12" fill="#758078">${v}</text>`}if(data.length>1)svg+=`<polyline points="${data.map((d,i)=>x(i)+','+y(d.mood)).join(' ')}" fill="none" stroke="#39765a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>`;data.forEach((d,i)=>{svg+=`<circle cx="${x(i)}" cy="${y(d.mood)}" r="5" fill="#39765a"><title>${new Date(d.time).toLocaleString('ru-RU')}: ${d.mood}/5</title></circle>`});svg+=`<text x="${L}" y="${H-8}" font-size="12" fill="#758078">${new Date(data[0].time).toLocaleDateString('ru-RU')}</text><text x="${W-R}" y="${H-8}" text-anchor="end" font-size="12" fill="#758078">${new Date(data[data.length-1].time).toLocaleDateString('ru-RU')}</text></svg>`;wrap.innerHTML=svg}
+function renderHistory(){const wrap=$('#historyList');if(!entries.length){wrap.innerHTML='<div class="empty">Пока нет записей. Добавьте первую отметку в разделе «Настроение».</div>';return}const sortOrder=$('#historySort')?.value||'newest';const sorted=entries.slice().sort((a,b)=>sortOrder==='oldest'?new Date(a.time)-new Date(b.time):new Date(b.time)-new Date(a.time));wrap.innerHTML=sorted.map(e=>`<div class="history-item"><div class="mini">${moodInfo[e.mood].symbol}</div><div><strong>${moodInfo[e.mood].label}</strong><div class="small muted">${new Date(e.time).toLocaleString('ru-RU')}</div>${e.comment?`<p style="margin:7px 0 0;white-space:pre-wrap">${escapeHtml(e.comment)}</p>`:'<p class="small muted" style="margin:5px 0 0">Без комментария</p>'}</div><span class="tag">${e.mood}/5</span></div>`).join('')}
+function escapeHtml(s){return s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+$('#historySort').addEventListener('change',renderHistory);
+$('#exportData').addEventListener('click',()=>{const blob=new Blob([JSON.stringify(entries,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='ritm-mood-data.json';a.click();URL.revokeObjectURL(a.href)});
+function renderApproachGrid(){const start=approachPage*APPROACHES_PER_PAGE;const shown=approachOrder.slice(start,start+APPROACHES_PER_PAGE);$('#therapyGrid').innerHTML=shown.map(key=>{const a=approaches[key];const active=selectedApproaches.includes(key);return `<button type="button" class="topic-card selectable ${active?'selected':''}" data-approach="${key}" aria-pressed="${active}"><span class="card-top"><strong>${a.name}</strong><span class="selected-mark">${active?'Выбрано ✓':''}</span></span><p>${a.description}</p></button>`}).join('');$('#approachPrev').disabled=approachPage===0;$('#approachNext').disabled=start+APPROACHES_PER_PAGE>=approachOrder.length;$('#approachPageLabel').textContent=`${start+1}–${Math.min(start+APPROACHES_PER_PAGE,approachOrder.length)} из ${approachOrder.length}`}
+function renderApproachSelection(){renderApproachGrid();document.querySelectorAll('[data-approach]').forEach(card=>{const active=selectedApproaches.includes(card.dataset.approach);card.classList.toggle('selected',active);card.setAttribute('aria-pressed',String(active));card.querySelector('.selected-mark').textContent=active?'Выбрано ✓':''});const selectionText=selectedApproaches.length?'Вы выбрали: '+selectedApproaches.map(k=>approachNames[k]).join(', '):'Можно выбрать до двух направлений.';$('#selectionNote').textContent=selectionLimitReached?'Можно выбрать не более двух направлений. Снимите один из выбранных подходов, чтобы выбрать другой.':selectionText;$('#resetApproaches').hidden=selectedApproaches.length===0;$('#resetConsultationDirection').hidden=selectedApproaches.length===0;const bookButton=$('#findSelectedTherapist');bookButton.hidden=selectedApproaches.length===0;bookButton.textContent='Найти терапевта в одном из подходов'}
+$('#therapyGrid').addEventListener('click',event=>{const card=event.target.closest('[data-approach]');if(!card)return;const key=card.dataset.approach;if(selectedApproaches.includes(key)){selectedApproaches=selectedApproaches.filter(x=>x!==key);selectionLimitReached=false}else if(selectedApproaches.length<MAX_SELECTED_APPROACHES){selectedApproaches=[...selectedApproaches,key];selectionLimitReached=false}else{selectionLimitReached=true;renderApproachSelection();return}localStorage.setItem(APPROACH_STORE,JSON.stringify(selectedApproaches));renderApproachSelection()});
+$('#approachPrev').addEventListener('click',()=>{if(approachPage>0){approachPage--;renderApproachSelection()}});$('#approachNext').addEventListener('click',()=>{if((approachPage+1)*APPROACHES_PER_PAGE<approachOrder.length){approachPage++;renderApproachSelection()}});
+function resetSelectedApproaches(){selectedApproaches=[];selectionLimitReached=false;localStorage.removeItem(APPROACH_STORE);renderApproachSelection();$('#contactNotice').hidden=true}
+$('#resetApproaches').addEventListener('click',resetSelectedApproaches);
+$('#resetConsultationDirection').addEventListener('click',resetSelectedApproaches);
+function goToConsultationWithApproaches(keys){selectedApproaches=[...new Set(keys.filter(key=>approaches[key]))].slice(0,MAX_SELECTED_APPROACHES);selectionLimitReached=false;localStorage.setItem(APPROACH_STORE,JSON.stringify(selectedApproaches));renderApproachSelection();const names=selectedApproaches.map(k=>approachNames[k]);const contactNotice=$('#contactNotice');contactNotice.hidden=false;contactNotice.textContent='В заявке будет указано направление: '+names.join(', ')+'. Выберите удобный способ связи с координатором.';$('#consultationPanel').scrollIntoView({behavior:'smooth',block:'center'});}
+$('#findSelectedTherapist').addEventListener('click',()=>{if(selectedApproaches.length)goToConsultationWithApproaches(selectedApproaches)});
+const questions=[
+ {q:'Когда возникает трудность, с чего вам хотелось бы начать?',a:[['Понять, как она влияет на историю моей жизни и самоощущение','narrative'],['Разобраться в мыслях и привычных действиях, которые её поддерживают','cbt'],['Замедлиться и понять, что я чувствую и в чём нуждаюсь','gestalt'],['Увидеть, как она связана с отношениями и окружением','systemic']]},
+ {q:'Что обычно помогает вам почувствовать, что изменения возможны?',a:[['Найти исключения — моменты, когда проблема уже была слабее','orkt'],['Понять чувства через образы, метафоры и внутренние переживания','eit'],['Получить конкретные навыки для сильных эмоций и кризисных моментов','dbt'],['Понять, откуда взялись повторяющиеся болезненные сценарии','schema']]},
+ {q:'Какой вопрос вызывает у вас больше любопытства?',a:[['Почему я снова оказываюсь в похожих ситуациях, хотя обещаю себе иначе?','psychoanalysis'],['Как жить по своим ценностям, даже если тревога не исчезает?','act'],['Какой смысл я хочу придавать своей жизни и решениям?','existential'],['Что мои эмоции пытаются сообщить о важных для меня отношениях?','eft']]},
+ {q:'Какой формат работы вам кажется комфортнее?',a:[['Свободный разговор и поиск новых смыслов в моём опыте','narrative'],['Структура, понятные цели и небольшие упражнения между встречами','cbt'],['Внимание к тому, что происходит со мной прямо в моменте','gestalt'],['Исследование повторяющихся циклов общения с близкими','systemic']]},
+ {q:'Представьте, что стало хотя бы на 10% легче. Что изменилось бы первым?',a:[['Я бы заметил(а) маленькие признаки улучшения и смог(ла) их развивать','orkt'],['Я бы смог(ла) выражать чувства, которые трудно облечь в слова','eit'],['Я бы научился(ась) выдерживать сильные эмоции без вредящих мне действий','dbt'],['Я бы реже попадал(а) в знакомую ловушку самокритики или отвержения','schema']]},
+ {q:'Что вам хочется лучше понять о себе?',a:[['Скрытые причины повторяющихся реакций и выборов','psychoanalysis'],['Как не отдавать мыслям полный контроль над моими решениями','act'],['Что для меня действительно важно и за что я хочу отвечать','existential'],['Как просить о близости, поддержке и безопасности','eft']]},
+ {q:'Когда вы сталкиваетесь с самокритикой, что было бы полезнее?',a:[['Отделить голос проблемы от того, кем я являюсь на самом деле','narrative'],['Проверить мысли на факты и попробовать более полезный ответ','cbt'],['Замечать чувства и потребности, которые стоят за критикой','gestalt'],['Понять, в каких отношениях и правилах закрепился этот голос','systemic']]},
+ {q:'Что вы чаще всего хотели бы изменить в повседневной жизни?',a:[['Найти работающие шаги и опереться на то, что уже получается','orkt'],['Лучше понимать эмоциональные реакции через образы и ощущения','eit'],['Научиться переживать кризисные минуты и возвращаться к равновесию','dbt'],['Изменить глубоко укоренившиеся ожидания от себя и других','schema']]},
+ {q:'Какое описание больше откликается?',a:[['Мне важно понять, почему прошлый опыт до сих пор влияет на настоящее','psychoanalysis'],['Я хочу меньше бороться с внутренними переживаниями и больше жить','act'],['Я ищу ясность в вопросах выбора, смысла и личной ответственности','existential'],['Я хочу понять свои эмоции и сделать близкие отношения безопаснее','eft']]},
+ {q:'Что для вас было бы признаком хорошей терапии?',a:[['Я могу по-новому рассказывать о себе и замечать свои сильные стороны','narrative'],['Я вижу конкретные изменения в мыслях, поведении и повседневных ситуациях','cbt'],['Я лучше понимаю свои чувства, желания и границы','gestalt'],['Мне легче менять привычные модели общения с людьми','systemic']]},
+ {q:'Если решение проблемы пока не находится, что звучит ближе?',a:[['Исследовать желаемое будущее и самый маленький возможный шаг','orkt'],['Прислушаться к внутреннему образу, который выражает переживание','eit'],['Сначала освоить навыки, которые помогут выдержать накал эмоций','dbt'],['Исследовать старую схему, которая снова запускается в похожих ситуациях','schema']]},
+ {q:'Какой итог работы кажется вам наиболее ценным?',a:[['Глубже понять собственную историю и внутренние противоречия','psychoanalysis'],['Действовать в сторону важного, не дожидаясь идеального самочувствия','act'],['Жить более осмысленно и принимать решения, которые действительно мои','existential'],['Лучше распознавать эмоции и строить более надёжную близость','eft']]}
+];
+let quizIndex=0;let quizAnswers=[];
+function renderQuiz(){const q=questions[quizIndex];$('#quizCounter').textContent=`Вопрос ${quizIndex+1} из ${questions.length}`;$('#quizProgress').style.width=((quizIndex+1)/questions.length*100)+'%';$('#quizQuestion').textContent=q.q;$('#quizOptions').innerHTML=q.a.map((a,i)=>`<button type="button" class="quiz-option ${quizAnswers[quizIndex]===i?'chosen':''}" data-choice="${i}">${a[0]}</button>`).join('');document.querySelectorAll('[data-choice]').forEach(b=>b.addEventListener('click',()=>{quizAnswers[quizIndex]=Number(b.dataset.choice);renderQuiz()}));$('#quizBack').disabled=quizIndex===0;$('#quizNext').disabled=quizAnswers[quizIndex]===undefined;$('#quizNext').textContent=quizIndex===questions.length-1?'Получить результат':'Далее'}
+$('#quizBack').addEventListener('click',()=>{if(quizIndex>0){quizIndex--;renderQuiz()}});
+$('#quizNext').addEventListener('click',()=>{if(quizAnswers[quizIndex]===undefined)return;if(quizIndex<questions.length-1){quizIndex++;renderQuiz();return}showQuizResult()});
+function showQuizResult(){const scores=Object.fromEntries(approachOrder.map(k=>[k,0]));quizAnswers.forEach((answer,i)=>{scores[questions[i].a[answer][1]]++});const max=Math.max(...Object.values(scores));const winners=Object.keys(scores).filter(k=>scores[k]===max).slice(0,MAX_SELECTED_APPROACHES);const names=winners.map(k=>approachNames[k]);const approachLabel=winners.length===1?`Найти терапевта в подходе «${names[0]}»`:`Найти терапевта в одном из подходов: ${names.join(' / ')}`;$('#quizArea').hidden=true;const result=$('#quizResult');result.hidden=false;result.innerHTML=`<strong>По вашим ответам чаще всего откликнулось:</strong><p style="margin:8px 0">${names.map(escapeHtml).join(' и ')}</p><p>Это повод познакомиться с ${winners.length===1?'этим подходом':'этими подходами'} подробнее. Результат отражает только ваши ответы в этом небольшом ознакомительном тесте и не означает, что другие направления вам не подходят.</p><div class="result-actions"><button type="button" class="button-lite" id="quizAgain">Пройти ещё раз</button><button type="button" class="find-therapist" id="findTherapist">${escapeHtml(approachLabel)}</button></div>`;$('#quizAgain').addEventListener('click',resetQuiz);$('#findTherapist').addEventListener('click',()=>goToConsultationWithApproaches(winners))}
+function resetQuiz(){quizIndex=0;quizAnswers=[];$('#quizArea').hidden=false;$('#quizResult').hidden=true;renderQuiz()}
+function showContactNotice(text){const n=$('#contactNotice');n.hidden=false;n.textContent=text}
+renderApproachSelection();renderQuiz();
+$('#emailContact').addEventListener('click',()=>{if(!COORDINATOR_EMAIL){showContactNotice('Чтобы включить отправку заявки по электронной почте, нужно указать email координатора в настройках контактов приложения.');return}const subject=encodeURIComponent('Заявка на подбор психолога');const body=encodeURIComponent('Здравствуйте! Хочу оставить заявку на подбор специалиста.\n\nИнтересующее направление: '+(selectedApproaches.map(k=>approachNames[k]).join(', ')||'Пока не выбрано')+'\n\nКак со мной связаться:');location.href=`mailto:${COORDINATOR_EMAIL}?subject=${subject}&body=${body}`});
+$('#telegramContact').addEventListener('click',()=>{if(!COORDINATOR_TELEGRAM){showContactNotice('Чтобы включить переход в Telegram, нужно указать ссылку или имя пользователя координатора в настройках контактов приложения.');return}const msg='Здравствуйте! Хочу оставить заявку на подбор специалиста. Интересующее направление: '+(selectedApproaches.map(k=>approachNames[k]).join(', ')||'пока не выбрано')+'.';const url=new URL(COORDINATOR_TELEGRAM);url.searchParams.set('text',msg);window.open(url.toString(),'_blank','noopener,noreferrer')});
+renderApproachSelection();renderQuiz();render();
+</script>
+</body>
+</html>
+
   </body>
   </html>
   </body>
