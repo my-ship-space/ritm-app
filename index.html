@@ -357,8 +357,23 @@ button.primary:hover{background:#206d62}
   <section class="panel hero">
     <h1>Замечать своё состояние — уже забота о себе.</h1>
     <p>Отмечайте настроение столько раз, сколько вам нужно. Со временем график поможет замечать изменения, а короткие материалы — лучше понимать себя.</p>
-    <div class="actions"><span class="tag">Без лимита отметок</span><span class="tag">Личный дневник</span><span class="tag">Без постановки диагнозов</span></div>
   </section>
+      <div class="panel">
+        <h2>Как вы себя чувствуете сейчас?</h2>
+        <p class="muted">Выберите один из пяти уровней. Можно сохранять новые отметки в любое время.</p>
+        <div class="moods" id="moods">
+          <button class="mood" data-mood="1"><span class="face"><svg class="face-svg" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="25"/><circle class="eye-dot" cx="23" cy="26" r="2.5"/><circle class="eye-dot" cx="41" cy="26" r="2.5"/><path class="mouth" d="M20 45 Q32 32 44 45"/></svg></span><span>Очень тяжело</span></button>
+          <button class="mood" data-mood="2"><span class="face"><svg class="face-svg" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="25"/><circle class="eye-dot" cx="23" cy="26" r="2.5"/><circle class="eye-dot" cx="41" cy="26" r="2.5"/><path class="mouth" d="M21 42 Q32 34 43 42"/></svg></span><span>Тяжело</span></button>
+          <button class="mood" data-mood="3"><span class="face"><svg class="face-svg" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="25"/><circle class="eye-dot" cx="23" cy="26" r="2.5"/><circle class="eye-dot" cx="41" cy="26" r="2.5"/><path class="mouth" d="M21 41 H43"/></svg></span><span>Нейтрально</span></button>
+          <button class="mood" data-mood="4"><span class="face"><svg class="face-svg" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="25"/><path class="eye" d="M19 27 Q23 22 28 27 M36 27 Q41 22 45 27"/><path class="mouth" d="M20 37 Q32 50 44 37"/></svg></span><span>Хорошо</span></button>
+          <button class="mood" data-mood="5"><span class="face"><svg class="face-svg" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="25"/><path class="eye" d="M18 27 Q23 20 29 27 M35 27 Q41 20 46 27"/><path class="mouth-open" d="M19 36 Q32 55 45 36 Q43 49 32 50 Q21 49 19 36 Z"/></svg></span><span>Очень хорошо</span></button>
+        </div>
+        <label for="comment"><strong>Комментарий</strong></label>
+        <textarea id="comment" class="field" rows="3" placeholder="Напишите комментарий или используйте это поле как личный дневник"></textarea>
+        <p class="privacy">Комментарии никак не анализируются и не используются для определения симптомов. Они сохраняются только вместе с отметками в вашей Истории на этом устройстве и не передаются специалистам или рекламным сервисам.</p>
+        <div class="actions"><button class="primary" id="saveMood" disabled>Сохранить отметку</button><span class="small muted" id="selectedLabel">Выберите настроение</span></div>
+        <div class="notice" id="screeningNotice" hidden></div>
+      </div>
   <details class="care-note">
     <summary>Забота о вашем ментальном здоровье</summary>
     <div class="care-note-body">
@@ -393,22 +408,6 @@ button.primary:hover{background:#206d62}
           <span class="gift-message" id="giftMessage">Каждый день — ещё один шаг к подарку.</span>
           <button type="button" class="gift-collection-link" id="giftCollectionButton">Посмотреть коллекцию печенек</button>
         </div>
-      </div>
-      <div class="panel">
-        <h2>Как вы себя чувствуете сейчас?</h2>
-        <p class="muted">Выберите один из пяти уровней. Можно сохранять новые отметки в любое время.</p>
-        <div class="moods" id="moods">
-          <button class="mood" data-mood="1"><span class="face"><svg class="face-svg" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="25"/><circle class="eye-dot" cx="23" cy="26" r="2.5"/><circle class="eye-dot" cx="41" cy="26" r="2.5"/><path class="mouth" d="M20 45 Q32 32 44 45"/></svg></span><span>Очень тяжело</span></button>
-          <button class="mood" data-mood="2"><span class="face"><svg class="face-svg" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="25"/><circle class="eye-dot" cx="23" cy="26" r="2.5"/><circle class="eye-dot" cx="41" cy="26" r="2.5"/><path class="mouth" d="M21 42 Q32 34 43 42"/></svg></span><span>Тяжело</span></button>
-          <button class="mood" data-mood="3"><span class="face"><svg class="face-svg" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="25"/><circle class="eye-dot" cx="23" cy="26" r="2.5"/><circle class="eye-dot" cx="41" cy="26" r="2.5"/><path class="mouth" d="M21 41 H43"/></svg></span><span>Нейтрально</span></button>
-          <button class="mood" data-mood="4"><span class="face"><svg class="face-svg" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="25"/><path class="eye" d="M19 27 Q23 22 28 27 M36 27 Q41 22 45 27"/><path class="mouth" d="M20 37 Q32 50 44 37"/></svg></span><span>Хорошо</span></button>
-          <button class="mood" data-mood="5"><span class="face"><svg class="face-svg" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="25"/><path class="eye" d="M18 27 Q23 20 29 27 M35 27 Q41 20 46 27"/><path class="mouth-open" d="M19 36 Q32 55 45 36 Q43 49 32 50 Q21 49 19 36 Z"/></svg></span><span>Очень хорошо</span></button>
-        </div>
-        <label for="comment"><strong>Комментарий</strong></label>
-        <textarea id="comment" class="field" rows="3" placeholder="Напишите комментарий или используйте это поле как личный дневник"></textarea>
-        <p class="privacy">Комментарии никак не анализируются и не используются для определения симптомов. Они сохраняются только вместе с отметками в вашей Истории на этом устройстве и не передаются специалистам или рекламным сервисам.</p>
-        <div class="actions"><button class="primary" id="saveMood" disabled>Сохранить отметку</button><span class="small muted" id="selectedLabel">Выберите настроение</span></div>
-        <div class="notice" id="screeningNotice" hidden></div>
       </div>
       <div class="panel">
         <h2>Ваш ритм</h2>
