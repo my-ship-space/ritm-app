@@ -298,6 +298,17 @@ button.primary:hover{background:#206d62}
   .mood span:last-child{font-size:clamp(10px, 2.7vw, 12px);min-height:2.6em}
 }
 
+
+/* Keep the long neutral label inside its narrow card on phones */
+.mood[data-mood="3"] span:last-child{
+  font-size:10px !important;
+  letter-spacing:-0.35px;
+  white-space:nowrap;
+}
+@media(max-width:380px){
+  .mood[data-mood="3"] span:last-child{font-size:9px !important}
+}
+
 </style>
 
 <meta name="theme-color" content="#b9e5f5">
